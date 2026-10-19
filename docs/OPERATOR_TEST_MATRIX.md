@@ -1,87 +1,122 @@
-# Матрица ручной проверки операторов
+# Operator Manual Verification Matrix
 
-Эта матрица предназначена для ручного запуска в интерфейсах поисковиков. DorkForge и обычные тесты проекта не выполняют сетевых поисковых запросов. Все строки пока `untested`; фактическое наблюдение и дату нужно заполнить после ручной проверки. Документированность оператора не означает, что его поведение прошло эмпирический тест.
+This matrix is intended for manual runs in search engine interfaces. DorkForge and the project's regular tests do not perform network search requests. All rows are currently `untested`; the actual observation and date must be filled in after manual verification. An operator being documented does not mean its behavior has passed an empirical test.
 
-`probe` и `example.com` используются как синтетические тестовые значения. Для сравнения проверяйте результат с тем же запросом без тестируемого оператора. Для неизвестного синтаксиса цель проверки — установить, применяется ли фильтр, игнорируется ли оператор или меняется ли разбор запроса.
+`probe` and `example.com` are used as synthetic test values. For comparison, check the result against the same query without the operator under test. For unknown syntax, the goal of the check is to establish whether the filter is applied, whether the operator is ignored, or whether the parsing of the query changes.
 
-| Провайдер | Оператор | Тестовый запрос | Ожидаемое поведение | Наблюдение | Дата | Статус |
-| --- | --- | --- | --- | --- | --- | --- |
-| Google | `site:` | `probe site:example.com` | Результаты ограничены указанным сайтом/доменом | Не проверено | - | `untested` |
-| Google | `filetype:` | `probe filetype:pdf` | Результаты ограничены документами PDF | Не проверено | - | `untested` |
-| Google | `ext:` | `probe ext:pdf` | Проверить, ограничиваются ли результаты расширением файла | Не проверено | - | `untested` |
-| Google | `inurl:` | `probe inurl:example` | Проверить фильтрацию терма по URL | Не проверено | - | `untested` |
-| Google | `allinurl:` | `probe allinurl:example test` | Проверить, ограничиваются ли URL все последующие термы | Не проверено | - | `untested` |
-| Google | `intitle:` | `probe intitle:example` | Проверить фильтрацию терма по заголовку | Не проверено | - | `untested` |
-| Google | `allintitle:` | `probe allintitle:example test` | Проверить, ограничиваются ли заголовки все последующие термы | Не проверено | - | `untested` |
-| Google | `intext:` | `probe intext:example` | Проверить фильтрацию терма по тексту страницы | Не проверено | - | `untested` |
-| Google | `allintext:` | `probe allintext:example test` | Проверить, ограничивается ли текст страницы всеми последующими термами | Не проверено | - | `untested` |
-| Google | `OR` | `example OR sample` | Результаты соответствуют одной из альтернатив | Не проверено | - | `untested` |
-| Google | `AND` | `example AND sample` | Проверить явное логическое пересечение | Не проверено | - | `untested` |
-| Google | `-` | `example -sample` | Результаты исключают терм `sample` | Не проверено | - | `untested` |
-| Google | `"` | `"exact phrase probe"` | Поиск точной фразы | Не проверено | - | `untested` |
-| Bing | `site:` | `probe site:example.com` | Результаты ограничены сайтом/доменом | Не проверено | - | `untested` |
-| Bing | `filetype:` | `probe filetype:pdf` | Результаты ограничены документами PDF | Не проверено | - | `untested` |
-| Bing | `ext:` | `probe ext:pdf` | Результаты ограничены расширением файла | Не проверено | - | `untested` |
-| Bing | `inurl:` | `probe inurl:example` | Официальное поведение не подтверждено; проверить фильтрацию по URL | Не проверено | - | `untested` |
-| Bing | `intitle:` | `probe intitle:example` | Проверить фильтрацию терма по метаданным заголовка | Не проверено | - | `untested` |
-| Bing | `inbody:` | `probe inbody:example` | Термин находится в тексте страницы; отдельно оценить надёжность | Не проверено | - | `untested` |
-| Bing | `inanchor:` | `probe inanchor:example` | Термин находится в тексте ссылки | Не проверено | - | `untested` |
-| Bing | `feed:` | `feed:probe` | Находит RSS/Atom-каналы для терма | Не проверено | - | `untested` |
-| Bing | `hasfeed:` | `probe site:example.com hasfeed:probe` | Находит страницы сайта, содержащие RSS/Atom-канал | Не проверено | - | `untested` |
-| Bing | `ip:` | `probe ip:8.8.8.8` | Результаты относятся к сайтам на указанном IPv4 | Не проверено | - | `untested` |
-| Bing | `loc:` | `probe loc:US` | Результаты ограничены указанным регионом | Не проверено | - | `untested` |
-| Bing | `language:` | `probe language:en` | Результаты ограничены указанным языком | Не проверено | - | `untested` |
-| Bing | `contains:` | `probe contains:pdf` | Находит страницы со ссылками на указанный тип файла | Не проверено | - | `untested` |
-| Bing | `url:` | `url:example.com` | Проверяет наличие домена/URL в индексе | Не проверено | - | `untested` |
-| Bing | `OR` | `example OR sample` | Результаты соответствуют одной из альтернатив | Не проверено | - | `untested` |
-| Bing | `AND` | `example AND sample` | Результаты содержат оба терма/условия | Не проверено | - | `untested` |
-| Bing | `NOT` | `example NOT sample` | Результаты исключают условие `sample` | Не проверено | - | `untested` |
-| Bing | `-` | `example -sample` | Результаты исключают терм `sample` | Не проверено | - | `untested` |
-| Bing | `"` | `"exact phrase probe"` | Поиск точной фразы | Не проверено | - | `untested` |
-| Yandex | `site:` | `probe site:example.com` | Поиск на сайте, его поддоменах и страницах | Не проверено | - | `untested` |
-| Yandex | `host:` | `probe host:example.com` | Поиск на конкретном основном хосте | Не проверено | - | `untested` |
-| Yandex | `rhost:` | `probe rhost:com.example` | Поиск на хосте с именем в обратном порядке | Не проверено | - | `untested` |
-| Yandex | `url:` | `probe url:example.com/path` | Поиск страниц по адресу или префиксу URL | Не проверено | - | `untested` |
-| Yandex | `domain:` | `probe domain:com` | Ограничение доменной зоной | Не проверено | - | `untested` |
-| Yandex | `inurl:` | `probe inurl:example` | Официальное поведение не подтверждено текущей справкой; проверить разбор URL | Не проверено | - | `untested` |
-| Yandex | `title:` | `probe title:example` | Официальное поведение не подтверждено текущей справкой; проверить фильтр заголовка | Не проверено | - | `untested` |
-| Yandex | `mime:` | `probe mime:pdf` | Результаты ограничены документами поддерживаемого типа | Не проверено | - | `untested` |
-| Yandex | `lang:` | `probe lang:en` | Результаты ограничены языком | Не проверено | - | `untested` |
-| Yandex | `date:` | `probe date:20200101` | Результаты ограничены датой публикации | Не проверено | - | `untested` |
-| Yandex | `\|` | `example \| sample` | Результаты содержат один или несколько альтернативных термов | Не проверено | - | `untested` |
-| Yandex | `&&` | `example && sample` | Официальное поведение не подтверждено; проверить явное логическое пересечение | Не проверено | - | `untested` |
-| Yandex | `~~` | `example ~~ sample` | Официальное поведение не подтверждено; проверить словный оператор отдельно от `site:` | Не проверено | - | `untested` |
-| Yandex | `-` | `example -sample` | Исключение слова; проверить позиционное ограничение в конце запроса | Не проверено | - | `untested` |
-| Yandex | `"` | `"exact phrase probe"` | Поиск фразы в заданной последовательности слов | Не проверено | - | `untested` |
-| Brave | `site:` | `probe site:example.com` | Результаты ограничены сайтом | Не проверено | - | `untested` |
-| Brave | `inurl:` | `probe inurl:example` | Не входит в подтверждённый allowlist; проверить, игнорируется ли или применяется | Не проверено | - | `untested` |
-| Brave | `filetype:` | `probe filetype:pdf` | Результаты ограничены указанным типом файла | Не проверено | - | `untested` |
-| Brave | `ext:` | `probe ext:pdf` | Результаты ограничены расширением файла | Не проверено | - | `untested` |
-| Brave | `intitle:` | `probe intitle:example` | Термин присутствует в заголовке страницы | Не проверено | - | `untested` |
-| Brave | `inbody:` | `probe inbody:example` | Термин присутствует в теле страницы | Не проверено | - | `untested` |
-| Brave | `inpage:` | `probe inpage:example` | Термин присутствует в заголовке или теле страницы | Не проверено | - | `untested` |
-| Brave | `loc:` | `probe loc:ca` | Результаты ограничены страной/регионом | Не проверено | - | `untested` |
-| Brave | `lang:` | `probe lang:en` | Результаты ограничены языком | Не проверено | - | `untested` |
-| Brave | `OR` | `example OR sample` | Результаты соответствуют одной из альтернатив | Не проверено | - | `untested` |
-| Brave | `AND` | `example AND sample` | Результаты соответствуют обоим условиям | Не проверено | - | `untested` |
-| Brave | `NOT` | `example NOT sample` | Результаты исключают условие `sample` | Не проверено | - | `untested` |
-| Brave | `-` | `example -sample` | Исключает результаты с термом `sample` | Не проверено | - | `untested` |
-| Brave | `+` | `example +sample` | Повышает приоритет страниц с термом `sample` | Не проверено | - | `untested` |
-| Brave | `"` | `"exact phrase probe"` | Поиск точной фразы | Не проверено | - | `untested` |
-| DuckDuckGo | `site:` | `probe site:example.com` | Результаты ограничены указанным сайтом | Не проверено | - | `untested` |
-| DuckDuckGo | `filetype:` | `probe filetype:pdf` | Результаты ограничены документированными типами файлов | Не проверено | - | `untested` |
-| DuckDuckGo | `inurl:` | `probe inurl:example` | URL содержит указанный терм; проверить ограничения на одно слово | Не проверено | - | `untested` |
-| DuckDuckGo | `intitle:` | `probe intitle:example` | Заголовок страницы содержит указанный терм | Не проверено | - | `untested` |
-| DuckDuckGo | `OR` | `example OR sample` | Не перечислен в официальной справке; проверить, не трактуется ли как обычный терм | Не проверено | - | `untested` |
-| DuckDuckGo | `AND` | `example AND sample` | Не перечислен в официальной справке; проверить, не трактуется ли как обычный терм | Не проверено | - | `untested` |
-| DuckDuckGo | `-` | `example -sample` | Результатов с термом `sample` становится меньше | Не проверено | - | `untested` |
-| DuckDuckGo | `+` | `example +sample` | Повышается приоритет страниц с термом `sample` | Не проверено | - | `untested` |
-| DuckDuckGo | `"` | `"exact phrase probe"` | Поиск точной фразы; проверить fallback похожих результатов | Не проверено | - | `untested` |
+## Table of Contents
 
-## Источники
+- [Google](#google)
+- [Bing](#bing)
+- [Yandex](#yandex)
+- [Brave](#brave)
+- [DuckDuckGo](#duckduckgo)
+- [Sources](#sources)
+
+---
+
+## Google
+
+| Operator | Test query | Expected behavior | Observation | Date | Status |
+| --- | --- | --- | --- | --- | --- |
+| `site:` | `probe site:example.com` | Results are limited to the specified site/domain | Not checked | - | `untested` |
+| `filetype:` | `probe filetype:pdf` | Results are limited to PDF documents | Not checked | - | `untested` |
+| `ext:` | `probe ext:pdf` | Check whether results are limited by file extension | Not checked | - | `untested` |
+| `inurl:` | `probe inurl:example` | Check filtering of a term by URL | Not checked | - | `untested` |
+| `allinurl:` | `probe allinurl:example test` | Check whether all following terms are restricted to the URL | Not checked | - | `untested` |
+| `intitle:` | `probe intitle:example` | Check filtering of a term by title | Not checked | - | `untested` |
+| `allintitle:` | `probe allintitle:example test` | Check whether all following terms are restricted to the title | Not checked | - | `untested` |
+| `intext:` | `probe intext:example` | Check filtering of a term by page text | Not checked | - | `untested` |
+| `allintext:` | `probe allintext:example test` | Check whether the page text is restricted by all following terms | Not checked | - | `untested` |
+| `OR` | `example OR sample` | Results match one of the alternatives | Not checked | - | `untested` |
+| `AND` | `example AND sample` | Check explicit logical intersection | Not checked | - | `untested` |
+| `-` | `example -sample` | Results exclude the term `sample` | Not checked | - | `untested` |
+| `"` | `"exact phrase probe"` | Exact phrase search | Not checked | - | `untested` |
+
+## Bing
+
+| Operator | Test query | Expected behavior | Observation | Date | Status |
+| --- | --- | --- | --- | --- | --- |
+| `site:` | `probe site:example.com` | Results are limited to the site/domain | Not checked | - | `untested` |
+| `filetype:` | `probe filetype:pdf` | Results are limited to PDF documents | Not checked | - | `untested` |
+| `ext:` | `probe ext:pdf` | Results are limited by file extension | Not checked | - | `untested` |
+| `inurl:` | `probe inurl:example` | Official behavior not confirmed; check filtering by URL | Not checked | - | `untested` |
+| `intitle:` | `probe intitle:example` | Check filtering of a term by title metadata | Not checked | - | `untested` |
+| `inbody:` | `probe inbody:example` | The term is in the page text; assess reliability separately | Not checked | - | `untested` |
+| `inanchor:` | `probe inanchor:example` | The term is in the link text | Not checked | - | `untested` |
+| `feed:` | `feed:probe` | Finds RSS/Atom feeds for the term | Not checked | - | `untested` |
+| `hasfeed:` | `probe site:example.com hasfeed:probe` | Finds pages of the site that contain an RSS/Atom feed | Not checked | - | `untested` |
+| `ip:` | `probe ip:8.8.8.8` | Results relate to sites on the specified IPv4 | Not checked | - | `untested` |
+| `loc:` | `probe loc:US` | Results are limited to the specified region | Not checked | - | `untested` |
+| `language:` | `probe language:en` | Results are limited to the specified language | Not checked | - | `untested` |
+| `contains:` | `probe contains:pdf` | Finds pages with links to the specified file type | Not checked | - | `untested` |
+| `url:` | `url:example.com` | Checks whether the domain/URL is present in the index | Not checked | - | `untested` |
+| `OR` | `example OR sample` | Results match one of the alternatives | Not checked | - | `untested` |
+| `AND` | `example AND sample` | Results contain both terms/conditions | Not checked | - | `untested` |
+| `NOT` | `example NOT sample` | Results exclude the condition `sample` | Not checked | - | `untested` |
+| `-` | `example -sample` | Results exclude the term `sample` | Not checked | - | `untested` |
+| `"` | `"exact phrase probe"` | Exact phrase search | Not checked | - | `untested` |
+
+## Yandex
+
+| Operator | Test query | Expected behavior | Observation | Date | Status |
+| --- | --- | --- | --- | --- | --- |
+| `site:` | `probe site:example.com` | Search on the site, its subdomains, and pages | Not checked | - | `untested` |
+| `host:` | `probe host:example.com` | Search on a specific main host | Not checked | - | `untested` |
+| `rhost:` | `probe rhost:com.example` | Search on a host whose name is in reverse order | Not checked | - | `untested` |
+| `url:` | `probe url:example.com/path` | Search for pages by address or URL prefix | Not checked | - | `untested` |
+| `domain:` | `probe domain:com` | Restriction by domain zone | Not checked | - | `untested` |
+| `inurl:` | `probe inurl:example` | Official behavior is not confirmed by the current help; check URL parsing | Not checked | - | `untested` |
+| `title:` | `probe title:example` | Official behavior is not confirmed by the current help; check the title filter | Not checked | - | `untested` |
+| `mime:` | `probe mime:pdf` | Results are limited to documents of a supported type | Not checked | - | `untested` |
+| `lang:` | `probe lang:en` | Results are limited by language | Not checked | - | `untested` |
+| `date:` | `probe date:20200101` | Results are limited by publication date | Not checked | - | `untested` |
+| `\|` | `example \| sample` | Results contain one or more of the alternative terms | Not checked | - | `untested` |
+| `&&` | `example && sample` | Official behavior not confirmed; check explicit logical intersection | Not checked | - | `untested` |
+| `~~` | `example ~~ sample` | Official behavior not confirmed; check the word operator separately from `site:` | Not checked | - | `untested` |
+| `-` | `example -sample` | Word exclusion; check the positional restriction at the end of the query | Not checked | - | `untested` |
+| `"` | `"exact phrase probe"` | Search for a phrase in the given word order | Not checked | - | `untested` |
+
+## Brave
+
+| Operator | Test query | Expected behavior | Observation | Date | Status |
+| --- | --- | --- | --- | --- | --- |
+| `site:` | `probe site:example.com` | Results are limited to the site | Not checked | - | `untested` |
+| `inurl:` | `probe inurl:example` | Not in the confirmed allowlist; check whether it is ignored or applied | Not checked | - | `untested` |
+| `filetype:` | `probe filetype:pdf` | Results are limited to the specified file type | Not checked | - | `untested` |
+| `ext:` | `probe ext:pdf` | Results are limited by file extension | Not checked | - | `untested` |
+| `intitle:` | `probe intitle:example` | The term is present in the page title | Not checked | - | `untested` |
+| `inbody:` | `probe inbody:example` | The term is present in the page body | Not checked | - | `untested` |
+| `inpage:` | `probe inpage:example` | The term is present in the page title or body | Not checked | - | `untested` |
+| `loc:` | `probe loc:ca` | Results are limited to the country/region | Not checked | - | `untested` |
+| `lang:` | `probe lang:en` | Results are limited by language | Not checked | - | `untested` |
+| `OR` | `example OR sample` | Results match one of the alternatives | Not checked | - | `untested` |
+| `AND` | `example AND sample` | Results match both conditions | Not checked | - | `untested` |
+| `NOT` | `example NOT sample` | Results exclude the condition `sample` | Not checked | - | `untested` |
+| `-` | `example -sample` | Excludes results with the term `sample` | Not checked | - | `untested` |
+| `+` | `example +sample` | Raises the priority of pages with the term `sample` | Not checked | - | `untested` |
+| `"` | `"exact phrase probe"` | Exact phrase search | Not checked | - | `untested` |
+
+## DuckDuckGo
+
+| Operator | Test query | Expected behavior | Observation | Date | Status |
+| --- | --- | --- | --- | --- | --- |
+| `site:` | `probe site:example.com` | Results are limited to the specified site | Not checked | - | `untested` |
+| `filetype:` | `probe filetype:pdf` | Results are limited to documented file types | Not checked | - | `untested` |
+| `inurl:` | `probe inurl:example` | The URL contains the specified term; check the single-word restriction | Not checked | - | `untested` |
+| `intitle:` | `probe intitle:example` | The page title contains the specified term | Not checked | - | `untested` |
+| `OR` | `example OR sample` | Not listed in the official help; check whether it is treated as an ordinary term | Not checked | - | `untested` |
+| `AND` | `example AND sample` | Not listed in the official help; check whether it is treated as an ordinary term | Not checked | - | `untested` |
+| `-` | `example -sample` | The number of results with the term `sample` decreases | Not checked | - | `untested` |
+| `+` | `example +sample` | The priority of pages with the term `sample` is raised | Not checked | - | `untested` |
+| `"` | `"exact phrase probe"` | Exact phrase search; check the fallback to similar results | Not checked | - | `untested` |
+
+---
+
+## Sources
 
 - Google: <https://support.google.com/websearch/answer/2466433>
-- Bing: <https://support.microsoft.com/ru-ru/bing/advanced-search-options> и <https://support.microsoft.com/ru-ru/bing/advanced-search-keywords>
-- Yandex: <https://yandex.com/support/search/en/query-language/qlanguage.md>, <https://yandex.com/support/search/en/query-language/search-operators.md> и <https://yandex.com/support/search/en/query-language/search-context.md>
+- Bing: <https://support.microsoft.com/ru-ru/bing/advanced-search-options> and <https://support.microsoft.com/ru-ru/bing/advanced-search-keywords>
+- Yandex: <https://yandex.com/support/search/en/query-language/qlanguage.md>, <https://yandex.com/support/search/en/query-language/search-operators.md>, and <https://yandex.com/support/search/en/query-language/search-context.md>
 - Brave: <https://search.brave.com/help/operators>
 - DuckDuckGo: <https://duckduckgo.com/duckduckgo-help-pages/results/syntax/>

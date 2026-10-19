@@ -1,44 +1,62 @@
-# DorkForge: примеры использования
+# DorkForge: Usage Examples
 
-Все команды работают локально: DorkForge генерирует запросы и ссылки для ручного открытия, но не выполняет поиск, сетевые подключения или сканирование.
+All commands run locally: DorkForge generates queries and links to be opened manually, but does not perform searches, network connections, or scanning.
 
-В примерах предполагается, что бинарный файл доступен как `dorkforge`. Для локальной сборки используйте `cargo run --` перед командой или `target/release/dorkforge` после `cargo build --release`.
+The examples assume the binary is available as `dorkforge`. For a local build, use `cargo run --` before the command, or `target/release/dorkforge` after `cargo build --release`.
 
-## Справочники и shell completion
+## Table of Contents
+
+- [Reference lists and shell completion](#reference-lists-and-shell-completion)
+- [Quick start](#quick-start)
+- [All identifier types](#all-identifier-types)
+- [Input sources](#input-sources)
+- [Filtering, variants, and limits](#filtering-variants-and-limits)
+- [Formats and output locations](#formats-and-output-locations)
+- [External templates](#external-templates)
+- [Template hot reload](#template-hot-reload)
+- [OSINT pivot graph](#osint-pivot-graph)
+- [Diff of runs](#diff-of-runs)
+- [Combined identifiers (Multi-Identifier OSINT)](#combined-identifiers-multi-identifier-osint)
+- [Source coverage matrix (Coverage)](#source-coverage-matrix-coverage)
+- [Template linting and validation (Lint Templates)](#template-linting-and-validation-lint-templates)
+
+---
+
+## Reference lists and shell completion
 
 ```bash
-# Поддерживаемые типы, категории и провайдеры
+# Supported types, categories, and providers
 dorkforge types
 dorkforge categories
 dorkforge providers
 
-# Сгенерировать completion для текущей оболочки
+# Generate completion for the current shell
 dorkforge completions zsh > ~/.zfunc/_dorkforge
 dorkforge completions bash > ~/.local/share/bash-completion/completions/dorkforge
 dorkforge completions fish > ~/.config/fish/completions/dorkforge.fish
 ```
 
-## Быстрый старт
+## Quick start
 
 ```bash
-# Один идентификатор, читаемый TXT в stdout
+# A single identifier, readable TXT to stdout
 dorkforge generate -t domain -v example.org
 
-# Все провайдеры и все артефакты в каталог results/
+# All providers and all artifacts into the results/ directory
 dorkforge generate -t domain -v example.org -f all -o results
 
-# Только Google и Brave, конкретные категории
+# Google and Brave only, specific categories
 dorkforge generate -t email -v analyst@example.org \
   -p google,brave -c exact_match,documents,code -f html -o report.html
 ```
 
-`-p` принимает `google`, `bing`, `yandex`, `brave`, `duckduckgo` (также `ddg`). Канонические категории перечислены командой `dorkforge categories`; старые aliases `profiles`, `code`, `archives`, `company`, `security` и `tech` остаются допустимыми для фильтрации.
+`-p` accepts `google`, `bing`, `yandex`, `brave`, `duckduckgo` (also `ddg`). The canonical categories are listed by the `dorkforge categories` command; the legacy aliases `profiles`, `code`, `archives`, `company`, `security`, and `tech` remain valid for filtering.
 
-Провайдерские шаблоны дополняет общий слой [shared_templates.toml](../config/templates/shared_templates.toml). Общие запросы используют только синтаксис, подходящий всем указанным поисковикам; точные дубли каталогов провайдеров проверяются тестами. `high_recall` не является метрикой полноты, и генератор не обещает полный охват поисковых результатов или поддоменов.
+Provider templates are supplemented by the shared layer [shared_templates.toml](../config/templates/shared_templates.toml). Shared queries use only syntax that is suitable for all the listed search engines; exact duplicates of the provider catalogs are checked by tests. `high_recall` is not a completeness metric, and the generator does not promise full coverage of search results or subdomains.
 
-## Все типы идентификаторов
+## All identifier types
 
-Явно указывать `--type` рекомендуется всегда: это исключает неоднозначность автоматического определения.
+Always specifying `--type` explicitly is recommended: it eliminates the ambiguity of automatic detection.
 
 ```bash
 dorkforge generate -t email         -v user@example.org
@@ -59,33 +77,33 @@ dorkforge generate -t asn           -v AS15169
 dorkforge generate -t certificate   -v 3B:A0:6B:7C:F4:A8:12:44:89:10:00:11:22:33:44:55
 ```
 
-Подсказки `--country` и `--network` не являются сетевым обогащением: они только управляют локальной нормализацией и шаблонами.
+The `--country` and `--network` hints are not network enrichment: they only control local normalization and templates.
 
-## Источники входных данных
+## Input sources
 
-### Значение из аргумента
+### Value from an argument
 
 ```bash
 dorkforge generate --type email --value analyst@example.org
 ```
 
-### Одно значение из stdin
+### A single value from stdin
 
 ```bash
 printf '%s\n' 'analyst@example.org' | dorkforge generate -t email -v -
 ```
 
-`--watch` со stdin недоступен, потому что stdin является одноразовым источником.
+`--watch` is not available with stdin, because stdin is a one-shot source.
 
-### Текстовый batch-файл
+### Text batch file
 
-Одна строка — один идентификатор. При неоднозначных строках используйте JSON с типами.
+One line is one identifier. For ambiguous lines, use JSON with explicit types.
 
 ```bash
 dorkforge generate --input identifiers.txt -f both -o results
 ```
 
-### JSON batch-файл
+### JSON batch file
 
 ```json
 [
@@ -99,82 +117,82 @@ dorkforge generate --input identifiers.txt -f both -o results
 ```bash
 dorkforge generate -i identifiers.json -f all -o results
 
-# Остановить весь batch при первой ошибочной записи
+# Stop the entire batch at the first invalid record
 dorkforge generate -i identifiers.json --strict -f json -o results
 ```
 
-Без `--strict` неверные строки пропускаются с предупреждением. Для машинного сценария без диагностических сообщений используйте `--quiet`.
+Without `--strict`, invalid lines are skipped with a warning. For a machine-driven scenario without diagnostic messages, use `--quiet`.
 
-## Фильтрация, варианты и лимиты
+## Filtering, variants, and limits
 
 ```bash
-# Категории с короткими алиасами
+# Categories with short aliases
 dorkforge generate -t domain -v example.org -c documents,profiles,code
 
-# Ограничить поисковики
+# Restrict search engines
 dorkforge generate -t username -v alice_dev -p google,duckduckgo
 
-# Отключить дополнительные варианты записи
+# Disable additional spelling variants
 dorkforge generate -t phone -v "+381 60 1234567" --max-variants 1
 
-# Ограничить объём результата для пакетного запуска
+# Limit the output volume for a batch run
 dorkforge generate -i identifiers.json \
   --max-variants 5 \
   --max-queries-per-identifier 30 \
   --max-queries-per-provider 100
 ```
 
-Генерация остаётся детерминированной: одинаковые входные данные, шаблоны и параметры дают тот же порядок запросов. `fingerprint` — первые 8 шестнадцатеричных символов SHA-256 от текста запроса и служит короткой меткой. `record_id` (`dfq1_` + SHA-256) стабильно идентифицирует пару «провайдер + запрос»; прежний `query_id` сохраняет свою семантику.
+Generation remains deterministic: identical input, templates, and parameters produce the same query order. `fingerprint` is the first 8 hexadecimal characters of the SHA-256 of the query text and serves as a short label. `record_id` (`dfq1_` + SHA-256) stably identifies a "provider + query" pair; the former `query_id` keeps its semantics.
 
-Строгая дедупликация схлопывает повторные пробелы, но сохраняет регистр значения. Запросы разных провайдеров не удаляются друг из-за друга. В JSON `unique_query_texts` считает разные тексты, `unique_provider_queries` — пары «провайдер + текст», а `templates_used` — число использованных шаблонов.
+Strict deduplication collapses repeated whitespace but preserves the case of the value. Queries of different providers are not removed because of each other. In JSON, `unique_query_texts` counts distinct texts, `unique_provider_queries` counts "provider + text" pairs, and `templates_used` is the number of templates used.
 
-## Форматы и места вывода
+## Formats and output locations
 
-| Флаг | Содержимое | Без `-o` | В каталоге `-o results` |
+| Flag | Content | Without `-o` | In the `-o results` directory |
 | --- | --- | --- | --- |
 | `-f txt` | TXT | stdout | `results/dorks.txt` |
 | `-f json` | JSON | stdout | `results/dorks.json` |
-| `-f html` | HTML с ссылками | stdout | `results/dorks.html` |
-| `-f both` | TXT + JSON | TXT в stdout с предупреждением | `dorks.txt`, `dorks.json` |
-| `-f all` | TXT + JSON + HTML | TXT в stdout с предупреждением | `dorks.txt`, `dorks.json`, `dorks.html` |
+| `-f html` | HTML with links | stdout | `results/dorks.html` |
+| `-f both` | TXT + JSON | TXT to stdout with a warning | `dorks.txt`, `dorks.json` |
+| `-f all` | TXT + JSON + HTML | TXT to stdout with a warning | `dorks.txt`, `dorks.json`, `dorks.html` |
 
 ```bash
-# Чистый TXT: один запрос в строке, удобен для pipe
+# Clean TXT: one query per line, convenient for pipes
 dorkforge generate -t email -v analyst@example.org -f txt -m clean > dorks.txt
 
-# Читаемый TXT: сгруппирован по поисковику, категории и варианту
+# Readable TXT: grouped by search engine, category, and variant
 dorkforge generate -t email -v analyst@example.org -f txt -m readable
 
-# Только готовые поисковые URL для TXT
+# Ready-made search URLs only, for TXT
 dorkforge generate -t domain -v example.org --urls -m clean > urls.txt
 
-# HTML-отчёт: готовые кликабельные ссылки, без внешних скриптов и ресурсов
+# HTML report: ready-to-click links, no external scripts or resources
 dorkforge generate -t domain -v example.org -f html -o report.html
 
-# При прямом имени для нескольких форматов расширение заменяется
+# When a direct file name is given for several formats, the extension is replaced
 dorkforge generate -t domain -v example.org -f all -o artifacts/report.txt
-# Создаст artifacts/report.txt, artifacts/report.json, artifacts/report.html
+# Creates artifacts/report.txt, artifacts/report.json, artifacts/report.html
 ```
 
-По умолчанию существующий файл не перезаписывается. Для осознанной перезаписи добавьте `--overwrite`.
+By default, an existing file is not overwritten. To overwrite deliberately, add `--overwrite`.
 
 ```bash
 dorkforge generate -t domain -v example.org -f all -o results --overwrite
 ```
 
-`--urls` предназначен для TXT; HTML всегда содержит ссылки, а JSON сохраняет исходные структурированные запросы.
+`--urls` is intended for TXT; HTML always contains links, and JSON keeps the original structured queries.
 
-## Внешние шаблоны
+## External templates
 
 ```bash
-# Полностью заменить встроенный набор шаблонов
+# Fully replace the built-in template set
 dorkforge generate -t email -v analyst@example.org --config-dir ./templates -f all -o results
 
-# Добавить шаблоны к встроенному набору
+# Add templates to the built-in set
 dorkforge generate -t email -v analyst@example.org --extra-templates ./templates -f all -o results
 ```
 
-Минимальный TOML-шаблон:
+A minimal TOML template:
 
 ```toml
 [[template]]
@@ -187,82 +205,83 @@ template = '"{value}"'
 tags = ["email", "custom"]
 ```
 
-Доступные placeholders: `{value}`, `{domain}`, `{country}`. Провайдер и категория проходят проверку при загрузке шаблона. Необязательные поля `description`, `rationale`, `limitations`, `source_domains` и `template_version` сохраняются в JSON, если соответствующее поле входит в формат отчёта.
+Available placeholders: `{value}`, `{domain}`, `{country}`. The provider and category are validated when the template is loaded. The optional fields `description`, `rationale`, `limitations`, `source_domains`, and `template_version` are saved in JSON if the corresponding field is part of the report format.
 
-Проверка шаблона задаётся таблицей:
+Template validation is specified as a table:
 
 ```toml
 [template.validation]
 status = "untested"
 checked_at = "2026-10-16"
-comment = "Ручной поисковый тест ещё не выполнялся"
+comment = "Manual search test has not been performed yet"
 ```
 
-Допустимые статусы: `untested`, `passed`, `partial`, `failed`, `stale`. `passed` можно указывать только после ручной проверки; обычные тесты проекта не обращаются к поисковикам. Старая строковая форма `validation = "untested"` остаётся совместимой.
+Allowed statuses: `untested`, `passed`, `partial`, `failed`, `stale`. `passed` may be specified only after manual verification; the project's regular tests do not contact search engines. The legacy string form `validation = "untested"` remains compatible.
 
-Статусы операторов и официальные ссылки находятся в `config/providers.toml`. `documentation_status` принимает `documented`, `experimental`, `unknown` или `unsupported`; `test_status` хранит отдельный результат ручной проверки. Документированность сама по себе не означает, что поведение проверено.
+Operator statuses and official links are located in `config/providers.toml`. `documentation_status` accepts `documented`, `experimental`, `unknown`, or `unsupported`; `test_status` stores the separate result of manual verification. Documentation status by itself does not mean the behavior has been verified.
 
-## Hot reload шаблонов
+## Template hot reload
 
-`--watch` отслеживает TOML-файлы во внешнем каталоге и повторно генерирует артефакты при добавлении, удалении или изменении содержимого. Для первого запуска существующие файлы всё ещё защищены; добавьте `--overwrite`, если они уже существуют.
+`--watch` monitors TOML files in the external directory and regenerates the artifacts when the contents are added, removed, or modified. For the first run, existing files are still protected; add `--overwrite` if they already exist.
 
 ```bash
-# Проверка раз в секунду
+# Check once per second
 dorkforge generate -t email -v analyst@example.org \
   --extra-templates ./templates --watch -f all -o results
 
-# Проверка раз в 3 секунды
+# Check once every 3 seconds
 dorkforge generate -t domain -v example.org \
   --config-dir ./templates --watch --watch-interval 3 -f html -o results
 ```
 
-Если редактор на мгновение сохраняет невалидный TOML, DorkForge сообщает ошибку и сохраняет предыдущие артефакты. Следующее валидное изменение перегенерирует результат. Остановите режим сочетанием `Ctrl-C`.
+If an editor momentarily saves invalid TOML, DorkForge reports the error and keeps the previous artifacts. The next valid change regenerates the result. Stop the mode with `Ctrl-C`.
 
 ## OSINT pivot graph
 
-Команда `graph` принимает JSON, созданный через `generate -f json`, и выводит Graphviz DOT. В графе есть входные идентификаторы, запросы, категории и провайдеры. Узлы запросов имеют URL-атрибут, поэтому после рендеринга SVG становятся кликабельными.
+The `graph` command accepts JSON created via `generate -f json` and outputs Graphviz DOT. The graph contains input identifiers, queries, categories, and providers. Query nodes have a URL attribute, so they become clickable after rendering to SVG.
 
 ```bash
 dorkforge generate -t domain -v example.org -f json -o results
 dorkforge graph results/dorks.json -o results/pivots.dot
 
-# Необязательный рендеринг при установленном Graphviz
+# Optional rendering, if Graphviz is installed
 dot -Tsvg results/pivots.dot -o results/pivots.svg
 
-# Вывести DOT в stdout
+# Print DOT to stdout
 dorkforge graph results/dorks.json
 
-# Перезаписать существующий файл
+# Overwrite an existing file
 dorkforge graph results/dorks.json -o results/pivots.dot --overwrite
 ```
 
-## Diff запусков
+## Diff of runs
 
-Diff сравнивает полную пару «провайдер + запрос», а не короткий fingerprint. Это надёжно и при теоретической коллизии 8-символьного отпечатка.
+Diff compares the full "provider + query" pair, not the short fingerprint. This stays reliable even with a theoretical collision of the 8-character fingerprint.
 
 ```bash
-# Читаемый текстовый отчёт в stdout
+# Readable text report to stdout
 dorkforge diff before/dorks.json after/dorks.json
 
-# JSON-отчёт для автоматизации
+# JSON report for automation
 dorkforge diff before/dorks.json after/dorks.json -f json -o changes.json
+```
 
-JSON diff содержит массивы `added` и `removed`, а также число `unchanged`.
+The JSON diff contains the `added` and `removed` arrays, as well as the `unchanged` count.
 
-## Комбинированные идентификаторы (Multi-Identifier OSINT)
+## Combined identifiers (Multi-Identifier OSINT)
 
-DorkForge поддерживает одновременный поиск связок нескольких идентификаторов, когда шаблоны требуют нескольких типов входных данных (например, `username + domain`, `name + company`, `vin + license_plate`).
+DorkForge supports simultaneous searching for combinations of several identifiers, when templates require several types of input data (for example, `username + domain`, `name + company`, `vin + license_plate`).
 
-### Одиночная комбинация из CLI
+### A single combination from the CLI
 
 ```bash
-# Поиск связки никнейма и корпоративного домена
+# Search for a combination of a nickname and a corporate domain
 dorkforge generate \
   --combine username:security_lead \
   --combine domain:corp.example.org \
   --format txt --mode readable
 
-# Спецификация с явными лимитами декартова произведения вариантов
+# Specification with explicit limits on the Cartesian product of variants
 dorkforge generate \
   --combine name:"Иван Иванов" \
   --combine company:"ООО Вектор" \
@@ -272,9 +291,9 @@ dorkforge generate \
   --format json -o results
 ```
 
-### Пакетный файл комбинаций (JSON)
+### Batch combinations file (JSON)
 
-Файл `examples/combinations.json` содержит массив сценариев связок:
+The file `examples/combinations.json` contains an array of combination scenarios:
 
 ```json
 {
@@ -297,42 +316,41 @@ dorkforge generate \
 }
 ```
 
-Запуск пакетной генерации комбинаций:
+Running batch generation of combinations:
 
 ```bash
 dorkforge generate -i examples/combinations.json -f all -o results
 ```
 
-В итоговом JSON-файле каждый запрос комбинации содержит поле `identifiers` с полной трассировкой использованных типов и вариантов.
+In the resulting JSON file, each combination query contains an `identifiers` field with a full trace of the types and variants used.
 
-## Матрица покрытия источников (Coverage)
+## Source coverage matrix (Coverage)
 
-Команда `coverage` анализирует плотность покрытия категорий, провайдеров и источников данных OSINT (`config/sources.toml`).
+The `coverage` command analyzes the coverage density of categories, providers, and OSINT data sources (`config/sources.toml`).
 
 ```bash
-# Вывод таблицы покрытия в stdout
+# Print the coverage table to stdout
 dorkforge coverage
 
-# Экспорт матрицы в JSON
+# Export the matrix as JSON
 dorkforge coverage --format json -o coverage.json
 
-# Фильтрация по конкретному провайдеру, категории или типу идентификатора
+# Filter by a specific provider, category, or identifier type
 dorkforge coverage --provider google --category public_documents
 dorkforge coverage --type domain
 ```
 
-## Линтинг и валидация шаблонов (Lint Templates)
+## Template linting and validation (Lint Templates)
 
-Команда `lint-templates` производит офлайн-аудит TOML-каталогов шаблонов на предмет синтаксических ошибок, плейсхолдеров, совместимости операторов с базами поисковых систем и валидности синтаксиса URL документации:
+The `lint-templates` command performs an offline audit of TOML template directories for syntax errors, placeholders, compatibility of operators with search engine databases, and validity of documentation URL syntax:
 
 ```bash
-# Проверка встроенных шаблонов
+# Check the built-in templates
 dorkforge lint-templates
 
-# Строгий режим: любые замечания (warning/error) вызывают код возврата 1
+# Strict mode: any findings (warning/error) cause exit code 1
 dorkforge lint-templates --strict
 
-# Проверка внешнего каталога пользовательских шаблонов
+# Check an external directory of custom templates
 dorkforge lint-templates --path ./my-custom-templates --strict
 ```
-

@@ -1,39 +1,35 @@
-# Build directories
-build/
-build-*/
-cmake-build-*/
-bin/
-lib/
-out/
+# Rust build output
 /target
+
+# Build/packaging directories (root only)
+/build/
+/out/
+/bin/
+/lib/
+/.cache*
 /help_doc
 
-# CPack and packaging
-_CPack_Packages/
-*.tar.gz
-*.sh
-*.deb
-*.rpm
-*.dmg
-/.cache*
+# DorkForge generated artifacts
+/results/
+/artifacts/
 
-# OS and Editor files
+# OS and editor files
 .DS_Store
 .vscode/
 .idea/
 *.swp
 *~
+*.rs.bk
+*.pdb
 
 # Temporary and test artifacts
 *.tmp
 *.temp
-*.mcc
-*.mcda
 /test_*
-!tests/
-!tests/**
 doc.txt
 doc.restored.txt
 offline_test.*
 off_in.txt
 off_out.mcc
+*.mcc
+*.mcda
