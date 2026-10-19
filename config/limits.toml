@@ -1,0 +1,6 @@
+# DorkForge generation limits and policies
+max_variants_per_identifier = 10
+max_queries_per_identifier = 50
+max_queries_per_provider = 100
+dedup_policy = "strict"
+strict_mode = false

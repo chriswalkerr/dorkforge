@@ -1,0 +1,146 @@
+# Provider capabilities and per-operator evidence. `supported_operators` is the runtime allowlist.
+# `documentation_status` is separate from manual `test_status`; empty file_types means unspecified.
+
+[[providers]]
+id = "google"
+name = "Google Search"
+enabled = true
+supported_operators = ["site:", "filetype:", "ext:", "inurl:", "allinurl:", "intitle:", "allintitle:", "intext:", "allintext:", "OR", "AND", "-", "\""]
+supported_categories = ["exact_match", "mentions", "documents", "public_profiles", "forums", "code_repositories", "domain_pages", "subdomains", "archives", "public_records", "company_records", "security_reports", "technology_fingerprint", "marketplaces", "custom"]
+or_syntax = "OR"
+not_syntax = "-"
+file_types = []
+documentation_urls = ["https://support.google.com/websearch/answer/2466433"]
+last_checked = "2026-10-16"
+notes = "The official help confirms site:, filetype:, exact quotes, and minus. Other listed operators lack confirmation in this reference. cache: and related: are not included."
+[providers.operator_metadata]
+"site:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a site or domain." }
+"filetype:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a file type." }
+"cache:" = { documentation_status = "unsupported", test_status = "untested", description = "Legacy Google cache operator; not supported in the current catalog." }
+"related:" = { documentation_status = "unsupported", test_status = "untested", description = "Legacy Google related-pages operator; not supported in the current catalog." }
+"ext:" = { documentation_status = "unknown", test_status = "untested", description = "File-extension restriction; not listed in the current official help reference." }
+"inurl:" = { documentation_status = "unknown", test_status = "untested", description = "URL-term restriction; not listed in the current official help reference." }
+"allinurl:" = { documentation_status = "unknown", test_status = "untested", description = "Restricts all following terms to URLs; not listed in the current official help reference." }
+"intitle:" = { documentation_status = "unknown", test_status = "untested", description = "Title-term restriction; not listed in the current official help reference." }
+"allintitle:" = { documentation_status = "unknown", test_status = "untested", description = "Restricts all following terms to titles; not listed in the current official help reference." }
+"intext:" = { documentation_status = "unknown", test_status = "untested", description = "Page-text restriction; not listed in the current official help reference." }
+"allintext:" = { documentation_status = "unknown", test_status = "untested", description = "Restricts all following terms to page text; not listed in the current official help reference." }
+"OR" = { documentation_status = "documented", test_status = "untested", description = "Combines alternatives in a query." }
+"AND" = { documentation_status = "unknown", test_status = "untested", description = "Explicit conjunction; the current help describes query refinement but does not list this token." }
+"-" = { documentation_status = "documented", test_status = "untested", description = "Excludes results containing the following term." }
+"\"" = { documentation_status = "documented", test_status = "untested", description = "Requests an exact phrase." }
+
+[[providers]]
+id = "bing"
+name = "Microsoft Bing"
+enabled = true
+supported_operators = ["site:", "filetype:", "ext:", "inurl:", "intitle:", "inbody:", "inanchor:", "feed:", "hasfeed:", "ip:", "loc:", "language:", "contains:", "url:", "OR", "AND", "NOT", "-", "\""]
+supported_categories = ["exact_match", "mentions", "documents", "public_profiles", "forums", "code_repositories", "domain_pages", "subdomains", "archives", "public_records", "company_records", "security_reports", "technology_fingerprint", "marketplaces", "custom"]
+or_syntax = "OR"
+not_syntax = "NOT or -"
+file_types = []
+documentation_urls = ["https://support.microsoft.com/ru-ru/bing/advanced-search-options", "https://support.microsoft.com/ru-ru/bing/advanced-search-keywords"]
+last_checked = "2026-10-16"
+notes = "Microsoft documents the listed operators. Results may vary by region; only the first 10 query terms are used. feed:/hasfeed: are not enabled in this catalog."
+[providers.operator_metadata]
+"site:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a site, domain, or supported directory." }
+"filetype:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a specified document type." }
+"ext:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a specified filename extension." }
+"inurl:" = { documentation_status = "unknown", test_status = "untested", description = "URL-term restriction; not listed in current Microsoft search-operator help." }
+"intitle:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to terms in page metadata such as the title." }
+"inbody:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a term in page body text." }
+"inanchor:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a term in link-anchor metadata." }
+"feed:" = { documentation_status = "documented", test_status = "untested", description = "Finds RSS or Atom feeds for matching terms." , limitations = "Not used by built-in templates; behavior has not been manually checked." }
+"hasfeed:" = { documentation_status = "documented", test_status = "untested", description = "Finds pages containing an RSS or Atom feed." , limitations = "Not used by built-in templates; behavior has not been manually checked." }
+"ip:" = { documentation_status = "documented", test_status = "untested", description = "Finds sites hosted at an IPv4 address." }
+"loc:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a country or region code." }
+"language:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a language code." }
+"contains:" = { documentation_status = "documented", test_status = "untested", description = "Finds pages linking to specified file types." }
+"url:" = { documentation_status = "documented", test_status = "untested", description = "Checks whether a domain or URL is in the Bing index." }
+"OR" = { documentation_status = "documented", test_status = "untested", description = "Matches either side of a Boolean alternative." }
+"AND" = { documentation_status = "documented", test_status = "untested", description = "Requires all specified terms or phrases." }
+"NOT" = { documentation_status = "documented", test_status = "untested", description = "Excludes results matching the following term or phrase." }
+"-" = { documentation_status = "documented", test_status = "untested", description = "Excludes the following term or phrase." }
+"\"" = { documentation_status = "documented", test_status = "untested", description = "Groups an exact phrase." }
+
+[[providers]]
+id = "yandex"
+name = "Yandex Search"
+enabled = true
+supported_operators = ["site:", "host:", "rhost:", "url:", "domain:", "inurl:", "title:", "mime:", "lang:", "date:", "|", "&&", "~~", "-", "\""]
+supported_categories = ["exact_match", "mentions", "documents", "public_profiles", "forums", "code_repositories", "domain_pages", "subdomains", "archives", "public_records", "company_records", "security_reports", "technology_fingerprint", "marketplaces", "custom"]
+or_syntax = "|"
+not_syntax = "-"
+file_types = ["pdf", "xls", "ods", "rtf", "ppt", "odp", "swf", "odt", "odg", "doc"]
+documentation_urls = ["https://yandex.com/support/search/en/query-language/qlanguage.md", "https://yandex.com/support/search/en/query-language/search-operators.md", "https://yandex.com/support/search/en/query-language/search-context.md"]
+last_checked = "2026-10-16"
+notes = "mime: supports only listed types. Official documentation describes | and - but does not document && or ~~; host operators require the primary site address."
+[providers.operator_metadata]
+"site:" = { documentation_status = "documented", test_status = "untested", description = "Searches pages on a site, including subdomains and pages." }
+"host:" = { documentation_status = "documented", test_status = "untested", description = "Searches pages on a specific host." }
+"rhost:" = { documentation_status = "documented", test_status = "untested", description = "Searches pages using a host name in reverse order." }
+"url:" = { documentation_status = "documented", test_status = "untested", description = "Searches documents at a URL or matching a URL prefix." }
+"domain:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a domain zone." }
+"mime:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to documented file types." }
+"lang:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to a two-letter language code." }
+"title:" = { documentation_status = "unknown", test_status = "untested", description = "Title restriction; not listed in the current official query-language references." }
+"inurl:" = { documentation_status = "unknown", test_status = "untested", description = "URL-term restriction; not listed in the current official query-language references." }
+"date:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results by publication date or date range." }
+"&&" = { documentation_status = "unknown", test_status = "untested", description = "Boolean conjunction; not listed in the current official query-language references." }
+"|" = { documentation_status = "documented", test_status = "untested", description = "Matches documents containing at least one alternative term." }
+"~~" = { documentation_status = "unknown", test_status = "untested", description = "Word-level operator; not listed in the current official query-language references." }
+"-" = { documentation_status = "documented", test_status = "untested", description = "Excludes the following word from results." }
+"\"" = { documentation_status = "documented", test_status = "untested", description = "Searches for a phrase in the specified word order and form." }
+
+[[providers]]
+id = "brave"
+name = "Brave Search"
+enabled = true
+supported_operators = ["site:", "filetype:", "ext:", "intitle:", "inbody:", "inpage:", "loc:", "lang:", "OR", "AND", "NOT", "-", "+", "\""]
+supported_categories = ["exact_match", "mentions", "documents", "public_profiles", "forums", "code_repositories", "domain_pages", "subdomains", "archives", "public_records", "company_records", "security_reports", "technology_fingerprint", "marketplaces", "custom"]
+or_syntax = "OR"
+not_syntax = "NOT"
+file_types = []
+documentation_urls = ["https://search.brave.com/help/operators"]
+last_checked = "2026-10-16"
+notes = "Brave explicitly labels search operators experimental. The documentation describes the listed operators; behavior remains untested locally."
+[providers.operator_metadata]
+"site:" = { documentation_status = "experimental", test_status = "untested", description = "Restricts results to a website." }
+"inurl:" = { documentation_status = "unknown", test_status = "untested", description = "URL-term restriction; not listed in Brave's current official operator help." }
+"filetype:" = { documentation_status = "experimental", test_status = "untested", description = "Restricts results to a file type." }
+"ext:" = { documentation_status = "experimental", test_status = "untested", description = "Restricts results to a file extension." }
+"intitle:" = { documentation_status = "experimental", test_status = "untested", description = "Restricts results to terms in page titles." }
+"inbody:" = { documentation_status = "experimental", test_status = "untested", description = "Restricts results to terms in page bodies." }
+"inpage:" = { documentation_status = "experimental", test_status = "untested", description = "Restricts results to terms in page titles or bodies." }
+"loc:" = { documentation_status = "experimental", test_status = "untested", description = "Restricts results to a country or region code." }
+"lang:" = { documentation_status = "experimental", test_status = "untested", description = "Restricts results to a language code." }
+"OR" = { documentation_status = "experimental", test_status = "untested", description = "Matches either side of a Boolean alternative." }
+"AND" = { documentation_status = "experimental", test_status = "untested", description = "Requires all specified terms or conditions." }
+"NOT" = { documentation_status = "experimental", test_status = "untested", description = "Excludes results matching the following condition." }
+"-" = { documentation_status = "experimental", test_status = "untested", description = "Excludes results containing the following term." }
+"+" = { documentation_status = "experimental", test_status = "untested", description = "Promotes results containing the following term." }
+"\"" = { documentation_status = "experimental", test_status = "untested", description = "Requests an exact phrase." }
+
+[[providers]]
+id = "duckduckgo"
+name = "DuckDuckGo"
+enabled = true
+supported_operators = ["site:", "filetype:", "inurl:", "intitle:", "-", "+", "\""]
+supported_categories = ["exact_match", "mentions", "documents", "public_profiles", "forums", "code_repositories", "domain_pages", "subdomains", "archives", "public_records", "company_records", "security_reports", "technology_fingerprint", "marketplaces", "custom"]
+or_syntax = ""
+not_syntax = "-"
+file_types = ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "html"]
+documentation_urls = ["https://duckduckgo.com/duckduckgo-help-pages/results/syntax/"]
+last_checked = "2026-10-16"
+notes = "The official help warns that advanced syntax may not work correctly for every query. File types are limited to the documented list; OR and parentheses are not listed."
+[providers.operator_metadata]
+"site:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to pages from a site." }
+"filetype:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to the documented file types." }
+"inurl:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to terms in page URLs." }
+"intitle:" = { documentation_status = "documented", test_status = "untested", description = "Restricts results to terms in page titles." }
+"inbody:" = { documentation_status = "unknown", test_status = "untested", description = "Body-text restriction; not listed in DuckDuckGo's current official syntax help." }
+"OR" = { documentation_status = "unknown", test_status = "untested", description = "Explicit OR token; not listed in DuckDuckGo's current official syntax help." }
+"AND" = { documentation_status = "unknown", test_status = "untested", description = "Explicit AND token; not listed in DuckDuckGo's current official syntax help." }
+"-" = { documentation_status = "documented", test_status = "untested", description = "Reduces results containing the following term." }
+"+" = { documentation_status = "documented", test_status = "untested", description = "Promotes results containing the following term." }
+"\"" = { documentation_status = "documented", test_status = "untested", description = "Requests an exact phrase, with related-result fallback when few results match." }

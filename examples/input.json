@@ -1,0 +1,68 @@
+[
+  {
+    "type": "email",
+    "value": "analyst@example.org"
+  },
+  {
+    "type": "domain",
+    "value": "targetcorp.com"
+  },
+  {
+    "type": "wallet",
+    "value": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+    "network": "eth"
+  },
+  {
+    "type": "company",
+    "value": "Acme Global Solutions LLC"
+  },
+  {
+    "type": "username",
+    "value": "target_security_lead"
+  },
+  {
+    "type": "license_plate",
+    "value": "BG-123-AA",
+    "country": "RS"
+  },
+  {
+    "type": "vin",
+    "value": "1HGCR2F83HA000000"
+  },
+  {
+    "type": "file_hash",
+    "value": "e4d909c290d0fb1ca068ffaddf22cbd0"
+  },
+  {
+    "type": "name",
+    "value": "John Smith"
+  },
+  {
+    "type": "ip",
+    "value": "198.51.100.42"
+  },
+  {
+    "type": "phone",
+    "value": "+14155552671"
+  },
+  {
+    "type": "person_id",
+    "value": "0101990123456"
+  },
+  {
+    "type": "text_phrase",
+    "value": "Project Nightfall confidential"
+  },
+  {
+    "type": "asn",
+    "value": "AS15169"
+  },
+  {
+    "type": "certificate",
+    "value": "AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99"
+  },
+  {
+    "type": "url",
+    "value": "https://example.com/admin/login"
+  }
+]

@@ -1,0 +1,960 @@
+# Bing Search Templates (revised)
+# Documented: site, filetype, inbody (reliability disputed), intitle, ip, OR/NOT (uppercase), parentheses
+# Not in Microsoft docs: inurl -> not used
+# Optional keys (need parser support): note = "", validation = "untested"
+# Categories: blockchain_explorers, code_repositories, company_records, documents, domain_pages, exact_match, forums, indexed_pages, marketplaces, mentions, profiles, public_records, security_reports, subdomain_heuristics, technology_fingerprint
+
+# --- EMAIL ---
+[[template]]
+id = "bing_email_exact"
+enabled = true
+identifier_type = "email"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["email", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_email_pdf"
+enabled = true
+identifier_type = "email"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" filetype:pdf'
+tags = ["email", "documents"]
+validation = "untested"
+
+[[template]]
+id = "bing_email_sheets"
+enabled = true
+identifier_type = "email"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:xls OR filetype:xlsx OR filetype:csv)'
+tags = ["email", "documents"]
+validation = "untested"
+
+[[template]]
+id = "bing_email_mentions"
+enabled = true
+identifier_type = "email"
+category = "mentions"
+providers = ["bing"]
+template = 'inbody:"{value}"'
+tags = ["email", "mentions", "experimental"]
+validation = "untested"
+note = "inbody: is in Microsoft docs, but third-party checks report it as unreliable; verify"
+
+[[template]]
+id = "bing_email_github"
+enabled = true
+identifier_type = "email"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:github.com'
+tags = ["email", "github"]
+validation = "untested"
+
+[[template]]
+id = "bing_email_gitlab"
+enabled = true
+identifier_type = "email"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:gitlab.com'
+tags = ["email", "gitlab"]
+validation = "untested"
+
+[[template]]
+id = "bing_email_pastebin"
+enabled = true
+identifier_type = "email"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:pastebin.com'
+tags = ["email", "pastebin", "paste"]
+validation = "untested"
+
+[[template]]
+id = "bing_email_linkedin"
+enabled = true
+identifier_type = "email"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" site:linkedin.com/in'
+tags = ["email", "linkedin"]
+validation = "untested"
+
+[[template]]
+id = "bing_email_x"
+enabled = true
+identifier_type = "email"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" (site:x.com OR site:twitter.com)'
+tags = ["email", "profiles", "x"]
+validation = "untested"
+note = "x.com and twitter.com are one platform; old pages are indexed under twitter.com"
+
+# --- WALLET ---
+[[template]]
+id = "bing_wallet_exact"
+enabled = true
+identifier_type = "wallet"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["wallet", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_wallet_mentions"
+enabled = true
+identifier_type = "wallet"
+category = "mentions"
+providers = ["bing"]
+template = 'inbody:"{value}"'
+tags = ["wallet", "mentions", "experimental"]
+validation = "untested"
+note = "inbody: is in Microsoft docs, but third-party checks report it as unreliable; verify"
+
+[[template]]
+id = "bing_wallet_bitcointalk"
+enabled = true
+identifier_type = "wallet"
+category = "forums"
+providers = ["bing"]
+template = '"{value}" site:bitcointalk.org'
+tags = ["wallet", "bitcointalk"]
+validation = "untested"
+
+[[template]]
+id = "bing_wallet_reddit"
+enabled = true
+identifier_type = "wallet"
+category = "forums"
+providers = ["bing"]
+template = '"{value}" site:reddit.com'
+tags = ["wallet", "reddit"]
+validation = "untested"
+
+[[template]]
+id = "bing_wallet_documents"
+enabled = true
+identifier_type = "wallet"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:pdf OR filetype:txt OR filetype:csv)'
+tags = ["wallet", "documents"]
+validation = "untested"
+
+[[template]]
+id = "bing_wallet_blockchair"
+enabled = true
+identifier_type = "wallet"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}" site:blockchair.com'
+tags = ["wallet", "blockchair"]
+validation = "untested"
+note = "Network-dependent; select explorers by chain via network_or_asset"
+
+[[template]]
+id = "bing_wallet_etherscan"
+enabled = true
+identifier_type = "wallet"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}" site:etherscan.io'
+tags = ["wallet", "etherscan"]
+validation = "untested"
+note = "EVM addresses only"
+
+# --- USERNAME ---
+[[template]]
+id = "bing_username_exact"
+enabled = true
+identifier_type = "username"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["username", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_username_profile_github"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" site:github.com'
+tags = ["username", "profiles", "github"]
+validation = "untested"
+note = "inurl: is not in official docs for this engine; plain quoted value + site: used instead"
+
+[[template]]
+id = "bing_username_profile_x"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" (site:x.com OR site:twitter.com)'
+tags = ["username", "profiles", "x"]
+validation = "untested"
+note = "inurl: is not in official docs for this engine; plain quoted value + site: used instead"
+
+[[template]]
+id = "bing_username_profile_instagram"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" site:instagram.com'
+tags = ["username", "profiles", "instagram"]
+validation = "untested"
+note = "inurl: is not in official docs for this engine; plain quoted value + site: used instead"
+
+[[template]]
+id = "bing_username_profile_linkedin"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" site:linkedin.com/in'
+tags = ["username", "profiles", "linkedin"]
+validation = "untested"
+note = "inurl: is not in official docs for this engine; plain quoted value + site: used instead"
+
+[[template]]
+id = "bing_username_profile_medium"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" site:medium.com'
+tags = ["username", "profiles", "medium"]
+validation = "untested"
+note = "inurl: is not in official docs for this engine; plain quoted value + site: used instead"
+
+[[template]]
+id = "bing_username_reddit"
+enabled = true
+identifier_type = "username"
+category = "forums"
+providers = ["bing"]
+template = '"{value}" site:reddit.com'
+tags = ["username", "reddit"]
+validation = "untested"
+
+[[template]]
+id = "bing_username_gitlab"
+enabled = true
+identifier_type = "username"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:gitlab.com'
+tags = ["username", "gitlab"]
+validation = "untested"
+
+# --- NAME ---
+[[template]]
+id = "bing_name_exact"
+enabled = true
+identifier_type = "name"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["name", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_name_documents"
+enabled = true
+identifier_type = "name"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:pdf OR filetype:doc OR filetype:docx)'
+tags = ["name", "documents"]
+validation = "untested"
+
+[[template]]
+id = "bing_name_linkedin"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" site:linkedin.com/in'
+tags = ["name", "linkedin"]
+validation = "untested"
+
+[[template]]
+id = "bing_name_facebook"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" site:facebook.com'
+tags = ["name", "facebook"]
+validation = "untested"
+
+[[template]]
+id = "bing_name_instagram"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["bing"]
+template = '"{value}" site:instagram.com'
+tags = ["name", "instagram"]
+validation = "untested"
+
+[[template]]
+id = "bing_name_reddit"
+enabled = true
+identifier_type = "name"
+category = "forums"
+providers = ["bing"]
+template = '"{value}" site:reddit.com'
+tags = ["name", "reddit"]
+validation = "untested"
+
+[[template]]
+id = "bing_name_quora"
+enabled = true
+identifier_type = "name"
+category = "forums"
+providers = ["bing"]
+template = '"{value}" site:quora.com'
+tags = ["name", "quora"]
+validation = "untested"
+
+# --- DOMAIN ---
+[[template]]
+id = "bing_domain_exact"
+enabled = true
+identifier_type = "domain"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["domain", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_domain_indexed_pages"
+enabled = true
+identifier_type = "domain"
+category = "domain_pages"
+providers = ["bing"]
+template = 'site:{value}'
+tags = ["domain", "indexed_pages"]
+validation = "untested"
+
+[[template]]
+id = "bing_domain_subdomains"
+enabled = true
+identifier_type = "domain"
+category = "subdomains"
+providers = ["bing"]
+template = 'site:{value} -site:www.{value}'
+tags = ["domain", "subdomains", "heuristic"]
+validation = "untested"
+note = "Search-engine heuristic, not DNS enumeration; use CT logs / DNS sources for real inventory"
+
+[[template]]
+id = "bing_domain_mentions_external"
+enabled = true
+identifier_type = "domain"
+category = "mentions"
+providers = ["bing"]
+template = '"{value}" -site:{value}'
+tags = ["domain", "mentions", "experimental"]
+validation = "untested"
+note = "External mentions; does not guarantee full exclusion of own pages"
+
+[[template]]
+id = "bing_domain_documents"
+enabled = true
+identifier_type = "domain"
+category = "documents"
+providers = ["bing"]
+template = 'site:{value} (filetype:pdf OR filetype:doc OR filetype:xls OR filetype:xlsx)'
+tags = ["domain", "documents"]
+validation = "untested"
+
+[[template]]
+id = "bing_domain_github"
+enabled = true
+identifier_type = "domain"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:github.com'
+tags = ["domain", "github"]
+validation = "untested"
+
+[[template]]
+id = "bing_domain_gitlab"
+enabled = true
+identifier_type = "domain"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:gitlab.com'
+tags = ["domain", "gitlab"]
+validation = "untested"
+
+[[template]]
+id = "bing_domain_bitbucket"
+enabled = true
+identifier_type = "domain"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:bitbucket.org'
+tags = ["domain", "bitbucket"]
+validation = "untested"
+
+# --- IP ---
+[[template]]
+id = "bing_ip_exact"
+enabled = true
+identifier_type = "ip"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["ip", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_ip_mentions"
+enabled = true
+identifier_type = "ip"
+category = "mentions"
+providers = ["bing"]
+template = 'inbody:"{value}"'
+tags = ["ip", "mentions", "experimental"]
+validation = "untested"
+note = "inbody: is in Microsoft docs, but third-party checks report it as unreliable; verify"
+
+[[template]]
+id = "bing_ip_documents"
+enabled = true
+identifier_type = "ip"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:log OR filetype:txt OR filetype:conf)'
+tags = ["ip", "documents"]
+validation = "untested"
+
+[[template]]
+id = "bing_ip_abuseipdb"
+enabled = true
+identifier_type = "ip"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:abuseipdb.com'
+tags = ["ip", "abuseipdb"]
+validation = "untested"
+
+[[template]]
+id = "bing_ip_virustotal"
+enabled = true
+identifier_type = "ip"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:virustotal.com'
+tags = ["ip", "virustotal"]
+validation = "untested"
+
+[[template]]
+id = "bing_ip_hosted_sites"
+enabled = true
+identifier_type = "ip"
+category = "technology_fingerprint"
+providers = ["bing"]
+template = 'ip:{value}'
+tags = ["ip", "hosted_sites", "bing_only"]
+validation = "untested"
+note = "Bing-only ip: operator: sites hosted on this IP, not mentions of it"
+
+# --- PHONE ---
+[[template]]
+id = "bing_phone_exact"
+enabled = true
+identifier_type = "phone"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["phone", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_phone_mentions"
+enabled = true
+identifier_type = "phone"
+category = "mentions"
+providers = ["bing"]
+template = 'inbody:"{value}"'
+tags = ["phone", "mentions", "experimental"]
+validation = "untested"
+note = "inbody: is in Microsoft docs, but third-party checks report it as unreliable; verify"
+
+[[template]]
+id = "bing_phone_documents"
+enabled = true
+identifier_type = "phone"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:pdf OR filetype:xls OR filetype:xlsx)'
+tags = ["phone", "documents"]
+validation = "untested"
+
+# --- LICENSE_PLATE ---
+[[template]]
+id = "bing_plate_exact"
+enabled = true
+identifier_type = "license_plate"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["license_plate", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_plate_mentions"
+enabled = true
+identifier_type = "license_plate"
+category = "mentions"
+providers = ["bing"]
+template = 'inbody:"{value}"'
+tags = ["license_plate", "mentions", "experimental"]
+validation = "untested"
+note = "inbody: is in Microsoft docs, but third-party checks report it as unreliable; verify"
+
+[[template]]
+id = "bing_plate_reddit"
+enabled = true
+identifier_type = "license_plate"
+category = "forums"
+providers = ["bing"]
+template = '"{value}" site:reddit.com'
+tags = ["license_plate", "reddit", "forums"]
+validation = "untested"
+
+# --- COMPANY ---
+[[template]]
+id = "bing_company_exact"
+enabled = true
+identifier_type = "company"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["company", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_company_opencorporates"
+enabled = true
+identifier_type = "company"
+category = "company_records"
+providers = ["bing"]
+template = '"{value}" site:opencorporates.com'
+tags = ["company", "opencorporates"]
+validation = "untested"
+
+[[template]]
+id = "bing_company_sec"
+enabled = true
+identifier_type = "company"
+category = "company_records"
+providers = ["bing"]
+template = '"{value}" site:sec.gov'
+tags = ["company", "sec"]
+validation = "untested"
+
+[[template]]
+id = "bing_company_docs"
+enabled = true
+identifier_type = "company"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:pdf OR filetype:xlsx OR filetype:csv)'
+tags = ["company", "documents"]
+validation = "untested"
+
+[[template]]
+id = "bing_company_nvd"
+enabled = true
+identifier_type = "company"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:nvd.nist.gov'
+tags = ["company", "nvd"]
+validation = "untested"
+
+[[template]]
+id = "bing_company_hackerone"
+enabled = true
+identifier_type = "company"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:hackerone.com'
+tags = ["company", "hackerone"]
+validation = "untested"
+
+# --- PERSON_ID ---
+[[template]]
+id = "bing_person_id_exact"
+enabled = true
+identifier_type = "person_id"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["person_id", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_person_id_ru_nalog"
+enabled = false
+identifier_type = "person_id"
+category = "public_records"
+providers = ["bing"]
+template = '"{value}" site:nalog.ru'
+tags = ["person_id", "records", "country_ru"]
+validation = "untested"
+note = "RU-only; enable via country profile. Replaces generic site:reestr.* / site:court.* masks"
+
+[[template]]
+id = "bing_person_id_docs"
+enabled = true
+identifier_type = "person_id"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:pdf OR filetype:doc OR filetype:xls)'
+tags = ["person_id", "documents"]
+validation = "untested"
+
+# --- URL ---
+[[template]]
+id = "bing_url_exact"
+enabled = true
+identifier_type = "url"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["url", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_url_github"
+enabled = true
+identifier_type = "url"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:github.com'
+tags = ["url", "github"]
+validation = "untested"
+
+[[template]]
+id = "bing_url_gitlab"
+enabled = true
+identifier_type = "url"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:gitlab.com'
+tags = ["url", "gitlab"]
+validation = "untested"
+
+[[template]]
+id = "bing_url_pastebin"
+enabled = true
+identifier_type = "url"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:pastebin.com'
+tags = ["url", "pastebin"]
+validation = "untested"
+
+[[template]]
+id = "bing_url_virustotal"
+enabled = true
+identifier_type = "url"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:virustotal.com'
+tags = ["url", "virustotal"]
+validation = "untested"
+
+[[template]]
+id = "bing_url_urlscan"
+enabled = true
+identifier_type = "url"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:urlscan.io'
+tags = ["url", "urlscan"]
+validation = "untested"
+
+[[template]]
+id = "bing_url_hybrid_analysis"
+enabled = true
+identifier_type = "url"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:hybrid-analysis.com'
+tags = ["url", "hybrid_analysis"]
+validation = "untested"
+
+# --- VIN ---
+[[template]]
+id = "bing_vin_exact"
+enabled = true
+identifier_type = "vin"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["vin", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_vin_copart"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["bing"]
+template = '"{value}" site:copart.com'
+tags = ["vin", "copart"]
+validation = "untested"
+
+[[template]]
+id = "bing_vin_iaai"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["bing"]
+template = '"{value}" site:iaai.com'
+tags = ["vin", "iaai"]
+validation = "untested"
+
+[[template]]
+id = "bing_vin_mobile_de"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["bing"]
+template = '"{value}" site:mobile.de'
+tags = ["vin", "mobile_de"]
+validation = "untested"
+
+[[template]]
+id = "bing_vin_docs"
+enabled = true
+identifier_type = "vin"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:pdf OR filetype:txt)'
+tags = ["vin", "documents"]
+validation = "untested"
+
+# --- FILE_HASH ---
+[[template]]
+id = "bing_hash_exact"
+enabled = true
+identifier_type = "file_hash"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["file_hash", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_hash_virustotal"
+enabled = true
+identifier_type = "file_hash"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:virustotal.com'
+tags = ["file_hash", "virustotal"]
+validation = "untested"
+
+[[template]]
+id = "bing_hash_any_run"
+enabled = true
+identifier_type = "file_hash"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:any.run'
+tags = ["file_hash", "any_run"]
+validation = "untested"
+
+[[template]]
+id = "bing_hash_hybrid_analysis"
+enabled = true
+identifier_type = "file_hash"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:hybrid-analysis.com'
+tags = ["file_hash", "hybrid_analysis"]
+validation = "untested"
+
+[[template]]
+id = "bing_hash_github"
+enabled = true
+identifier_type = "file_hash"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:github.com'
+tags = ["file_hash", "github"]
+validation = "untested"
+note = "Secondary pivot: a hash in a repo does not imply file info"
+
+[[template]]
+id = "bing_hash_gitlab"
+enabled = true
+identifier_type = "file_hash"
+category = "code_repositories"
+providers = ["bing"]
+template = '"{value}" site:gitlab.com'
+tags = ["file_hash", "gitlab"]
+validation = "untested"
+note = "Secondary pivot"
+
+# --- TEXT_PHRASE ---
+[[template]]
+id = "bing_phrase_exact"
+enabled = true
+identifier_type = "text_phrase"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["text_phrase", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_phrase_docs"
+enabled = true
+identifier_type = "text_phrase"
+category = "documents"
+providers = ["bing"]
+template = '"{value}" (filetype:pdf OR filetype:docx OR filetype:txt)'
+tags = ["text_phrase", "documents"]
+validation = "untested"
+
+[[template]]
+id = "bing_phrase_reddit"
+enabled = true
+identifier_type = "text_phrase"
+category = "forums"
+providers = ["bing"]
+template = '"{value}" site:reddit.com'
+tags = ["text_phrase", "reddit"]
+validation = "untested"
+
+[[template]]
+id = "bing_phrase_quora"
+enabled = true
+identifier_type = "text_phrase"
+category = "forums"
+providers = ["bing"]
+template = '"{value}" site:quora.com'
+tags = ["text_phrase", "quora"]
+validation = "untested"
+
+# --- ASN ---
+[[template]]
+id = "bing_asn_exact"
+enabled = true
+identifier_type = "asn"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["asn", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_asn_bgp_he"
+enabled = true
+identifier_type = "asn"
+category = "technology_fingerprint"
+providers = ["bing"]
+template = '"{value}" site:bgp.he.net'
+tags = ["asn", "bgp_he"]
+validation = "untested"
+
+[[template]]
+id = "bing_asn_ipinfo"
+enabled = true
+identifier_type = "asn"
+category = "technology_fingerprint"
+providers = ["bing"]
+template = '"{value}" site:ipinfo.io'
+tags = ["asn", "ipinfo"]
+validation = "untested"
+
+[[template]]
+id = "bing_asn_peeringdb"
+enabled = true
+identifier_type = "asn"
+category = "technology_fingerprint"
+providers = ["bing"]
+template = '"{value}" site:peeringdb.com'
+tags = ["asn", "peeringdb"]
+validation = "untested"
+
+[[template]]
+id = "bing_asn_abuseipdb"
+enabled = true
+identifier_type = "asn"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:abuseipdb.com'
+tags = ["asn", "abuseipdb"]
+validation = "untested"
+
+[[template]]
+id = "bing_asn_shodan"
+enabled = true
+identifier_type = "asn"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:shodan.io'
+tags = ["asn", "shodan"]
+validation = "untested"
+
+# --- CERTIFICATE ---
+[[template]]
+id = "bing_cert_exact"
+enabled = true
+identifier_type = "certificate"
+category = "exact_match"
+providers = ["bing"]
+template = '"{value}"'
+tags = ["certificate", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "bing_cert_crtsh"
+enabled = true
+identifier_type = "certificate"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:crt.sh'
+tags = ["certificate", "crtsh"]
+validation = "untested"
+
+[[template]]
+id = "bing_cert_censys"
+enabled = true
+identifier_type = "certificate"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:censys.io'
+tags = ["certificate", "censys"]
+validation = "untested"
+
+[[template]]
+id = "bing_cert_shodan"
+enabled = true
+identifier_type = "certificate"
+category = "security_reports"
+providers = ["bing"]
+template = '"{value}" site:shodan.io'
+tags = ["certificate", "shodan"]
+validation = "untested"

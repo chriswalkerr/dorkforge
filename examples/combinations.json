@@ -1,0 +1,74 @@
+{
+  "combinations": [
+    {
+      "id": "user_on_domain",
+      "identifiers": [
+        {
+          "type": "username",
+          "value": "sample_user"
+        },
+        {
+          "type": "domain",
+          "value": "example.org"
+        }
+      ],
+      "categories": [
+        "public_profiles",
+        "forums",
+        "code_repositories"
+      ],
+      "providers": [
+        "google",
+        "bing",
+        "yandex",
+        "brave",
+        "duckduckgo"
+      ]
+    },
+    {
+      "id": "person_company_docs",
+      "identifiers": [
+        {
+          "type": "name",
+          "value": "John Doe"
+        },
+        {
+          "type": "company",
+          "value": "Acme Corporation"
+        }
+      ],
+      "categories": [
+        "documents"
+      ],
+      "providers": [
+        "google",
+        "bing",
+        "brave",
+        "duckduckgo"
+      ]
+    },
+    {
+      "id": "vehicle_listing",
+      "identifiers": [
+        {
+          "type": "vin",
+          "value": "1HGCR2F83HA000000"
+        },
+        {
+          "type": "license_plate",
+          "value": "BG-123-AA"
+        }
+      ],
+      "categories": [
+        "marketplaces"
+      ],
+      "providers": [
+        "google",
+        "bing",
+        "yandex",
+        "brave",
+        "duckduckgo"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2826 @@
+{
+  "format_version": "1.0",
+  "generator_version": "1.0.0",
+  "parameters": {
+    "providers": [
+      "google",
+      "bing",
+      "yandex",
+      "brave",
+      "duckduckgo"
+    ],
+    "categories": null,
+    "max_variants": 10,
+    "max_queries_per_identifier": 50,
+    "max_queries_per_provider": 100,
+    "country": null,
+    "network_or_asset": null
+  },
+  "inputs": [
+    "analyst@example.org",
+    "targetcorp.com",
+    "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+    "Acme Global Solutions LLC",
+    "target_security_lead",
+    "BG-123-AA",
+    "1HGCR2F83HA000000",
+    "e4d909c290d0fb1ca068ffaddf22cbd0"
+  ],
+  "queries": [
+    {
+      "id": "bing_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "bing",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions LLC\" (site:opencorporates.com OR site:bloomberg.com)",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "bing_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "bing",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions\" (site:opencorporates.com OR site:bloomberg.com)",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "bing_email_pdf",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "bing",
+      "category": "documents",
+      "query": "\"analyst@example.org\" filetype:pdf",
+      "tags": [
+        "email",
+        "documents"
+      ]
+    },
+    {
+      "id": "bing_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "bing",
+      "category": "domain_pages",
+      "query": "site:targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "bing_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "bing",
+      "category": "domain_pages",
+      "query": "site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "bing_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions LLC\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"www.targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_email_exact",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_hash_exact",
+      "identifier_type": "file_hash",
+      "identifier": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "variant": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"e4d909c290d0fb1ca068ffaddf22cbd0\"",
+      "tags": [
+        "file_hash",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"target-security-lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"target.security.lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"target_security_lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"targetsecuritylead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"1HG CR2F83 HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"1HG-CR2F83-HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"1HGCR2F83HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_wallet_exact",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "bing",
+      "category": "exact_match",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\"",
+      "tags": [
+        "wallet",
+        "exact"
+      ]
+    },
+    {
+      "id": "bing_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "bing",
+      "category": "marketplaces",
+      "query": "\"1HG CR2F83 HA000000\" (site:copart.com OR site:iaai.com)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "bing_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "bing",
+      "category": "marketplaces",
+      "query": "\"1HG-CR2F83-HA000000\" (site:copart.com OR site:iaai.com)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "bing_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "bing",
+      "category": "marketplaces",
+      "query": "\"1HGCR2F83HA000000\" (site:copart.com OR site:iaai.com)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "bing_email_mentions",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "bing",
+      "category": "mentions",
+      "query": "inbody:\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "mentions"
+      ]
+    },
+    {
+      "id": "bing_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "bing",
+      "category": "mentions",
+      "query": "inbody:\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "bing_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "bing",
+      "category": "mentions",
+      "query": "inbody:\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "bing_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "bing",
+      "category": "mentions",
+      "query": "inbody:\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "bing_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "bing",
+      "category": "mentions",
+      "query": "inbody:\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "bing_wallet_mentions",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "bing",
+      "category": "mentions",
+      "query": "inbody:\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\"",
+      "tags": [
+        "wallet",
+        "mentions"
+      ]
+    },
+    {
+      "id": "bing_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "bing",
+      "category": "profiles",
+      "query": "inurl:\"target-security-lead\" (site:linkedin.com/in OR site:twitter.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "bing_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "bing",
+      "category": "profiles",
+      "query": "inurl:\"target.security.lead\" (site:linkedin.com/in OR site:twitter.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "bing_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "bing",
+      "category": "profiles",
+      "query": "inurl:\"target_security_lead\" (site:linkedin.com/in OR site:twitter.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "bing_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "bing",
+      "category": "profiles",
+      "query": "inurl:\"targetsecuritylead\" (site:linkedin.com/in OR site:twitter.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "bing_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "bing",
+      "category": "subdomains",
+      "query": "site:targetcorp.com -site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "bing_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "bing",
+      "category": "subdomains",
+      "query": "site:www.targetcorp.com -site:www.www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "brave_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "brave",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions LLC\" (site:opencorporates.com OR site:bloomberg.com)",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "brave_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "brave",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions\" (site:opencorporates.com OR site:bloomberg.com)",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "brave_email_documents",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "brave",
+      "category": "documents",
+      "query": "\"analyst@example.org\" filetype:pdf",
+      "tags": [
+        "email",
+        "documents"
+      ]
+    },
+    {
+      "id": "brave_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "brave",
+      "category": "domain_pages",
+      "query": "site:targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "brave_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "brave",
+      "category": "domain_pages",
+      "query": "site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "brave_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions LLC\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"www.targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_email_exact",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_hash_exact",
+      "identifier_type": "file_hash",
+      "identifier": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "variant": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"e4d909c290d0fb1ca068ffaddf22cbd0\"",
+      "tags": [
+        "file_hash",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"target-security-lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"target.security.lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"target_security_lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"targetsecuritylead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"1HG CR2F83 HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"1HG-CR2F83-HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"1HGCR2F83HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_wallet_exact",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "brave",
+      "category": "exact_match",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\"",
+      "tags": [
+        "wallet",
+        "exact"
+      ]
+    },
+    {
+      "id": "brave_wallet_forums",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "brave",
+      "category": "forums",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\" (site:reddit.com OR site:bitcointalk.org)",
+      "tags": [
+        "wallet",
+        "forums"
+      ]
+    },
+    {
+      "id": "brave_email_mentions",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "brave",
+      "category": "mentions",
+      "query": "inbody:\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "mentions"
+      ]
+    },
+    {
+      "id": "brave_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "brave",
+      "category": "mentions",
+      "query": "inbody:\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "brave_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "brave",
+      "category": "mentions",
+      "query": "inbody:\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "brave_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "brave",
+      "category": "mentions",
+      "query": "inbody:\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "brave_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "brave",
+      "category": "mentions",
+      "query": "inbody:\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "brave_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "brave",
+      "category": "profiles",
+      "query": "inurl:\"target-security-lead\" (site:github.com OR site:twitter.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "brave_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "brave",
+      "category": "profiles",
+      "query": "inurl:\"target.security.lead\" (site:github.com OR site:twitter.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "brave_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "brave",
+      "category": "profiles",
+      "query": "inurl:\"target_security_lead\" (site:github.com OR site:twitter.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "brave_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "brave",
+      "category": "profiles",
+      "query": "inurl:\"targetsecuritylead\" (site:github.com OR site:twitter.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "brave_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "brave",
+      "category": "subdomains",
+      "query": "site:targetcorp.com -site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "brave_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "brave",
+      "category": "subdomains",
+      "query": "site:www.targetcorp.com -site:www.www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "ddg_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "duckduckgo",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions LLC\" site:opencorporates.com",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "ddg_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "duckduckgo",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions\" site:opencorporates.com",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "ddg_email_pdf",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "duckduckgo",
+      "category": "documents",
+      "query": "\"analyst@example.org\" filetype:pdf",
+      "tags": [
+        "email",
+        "documents"
+      ]
+    },
+    {
+      "id": "ddg_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "duckduckgo",
+      "category": "domain_pages",
+      "query": "site:targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "ddg_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "duckduckgo",
+      "category": "domain_pages",
+      "query": "site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "ddg_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions LLC\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"www.targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_email_exact",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_hash_exact",
+      "identifier_type": "file_hash",
+      "identifier": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "variant": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"e4d909c290d0fb1ca068ffaddf22cbd0\"",
+      "tags": [
+        "file_hash",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"target-security-lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"target.security.lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"target_security_lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"targetsecuritylead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"1HG CR2F83 HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"1HG-CR2F83-HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"1HGCR2F83HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_wallet_exact",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "duckduckgo",
+      "category": "exact_match",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\"",
+      "tags": [
+        "wallet",
+        "exact"
+      ]
+    },
+    {
+      "id": "ddg_wallet_forums",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "duckduckgo",
+      "category": "forums",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\" site:reddit.com",
+      "tags": [
+        "wallet",
+        "forums"
+      ]
+    },
+    {
+      "id": "ddg_email_mentions",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "duckduckgo",
+      "category": "mentions",
+      "query": "inbody:\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "mentions"
+      ]
+    },
+    {
+      "id": "ddg_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "duckduckgo",
+      "category": "mentions",
+      "query": "inbody:\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "ddg_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "duckduckgo",
+      "category": "mentions",
+      "query": "inbody:\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "ddg_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "duckduckgo",
+      "category": "mentions",
+      "query": "inbody:\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "ddg_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "duckduckgo",
+      "category": "mentions",
+      "query": "inbody:\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "ddg_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "duckduckgo",
+      "category": "profiles",
+      "query": "inurl:\"target-security-lead\" site:github.com",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "ddg_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "duckduckgo",
+      "category": "profiles",
+      "query": "inurl:\"target.security.lead\" site:github.com",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "ddg_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "duckduckgo",
+      "category": "profiles",
+      "query": "inurl:\"target_security_lead\" site:github.com",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "ddg_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "duckduckgo",
+      "category": "profiles",
+      "query": "inurl:\"targetsecuritylead\" site:github.com",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "ddg_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "duckduckgo",
+      "category": "subdomains",
+      "query": "site:targetcorp.com -site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "ddg_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "duckduckgo",
+      "category": "subdomains",
+      "query": "site:www.targetcorp.com -site:www.www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "google_domain_code",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "google",
+      "category": "code",
+      "query": "\"targetcorp.com\" (site:github.com OR site:gitlab.com OR site:bitbucket.org)",
+      "tags": [
+        "domain",
+        "code"
+      ]
+    },
+    {
+      "id": "google_domain_code",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "google",
+      "category": "code",
+      "query": "\"www.targetcorp.com\" (site:github.com OR site:gitlab.com OR site:bitbucket.org)",
+      "tags": [
+        "domain",
+        "code"
+      ]
+    },
+    {
+      "id": "google_email_code",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "google",
+      "category": "code",
+      "query": "\"analyst@example.org\" (site:github.com OR site:gitlab.com OR site:pastebin.com)",
+      "tags": [
+        "email",
+        "code"
+      ]
+    },
+    {
+      "id": "google_username_code",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "google",
+      "category": "code",
+      "query": "\"target-security-lead\" (site:github.com OR site:gitlab.com OR site:gist.github.com)",
+      "tags": [
+        "username",
+        "code"
+      ]
+    },
+    {
+      "id": "google_username_code",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "google",
+      "category": "code",
+      "query": "\"target.security.lead\" (site:github.com OR site:gitlab.com OR site:gist.github.com)",
+      "tags": [
+        "username",
+        "code"
+      ]
+    },
+    {
+      "id": "google_username_code",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "google",
+      "category": "code",
+      "query": "\"target_security_lead\" (site:github.com OR site:gitlab.com OR site:gist.github.com)",
+      "tags": [
+        "username",
+        "code"
+      ]
+    },
+    {
+      "id": "google_username_code",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "google",
+      "category": "code",
+      "query": "\"targetsecuritylead\" (site:github.com OR site:gitlab.com OR site:gist.github.com)",
+      "tags": [
+        "username",
+        "code"
+      ]
+    },
+    {
+      "id": "google_hash_code",
+      "identifier_type": "file_hash",
+      "identifier": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "variant": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "provider": "google",
+      "category": "code_repositories",
+      "query": "\"e4d909c290d0fb1ca068ffaddf22cbd0\" (site:github.com OR site:gitlab.com)",
+      "tags": [
+        "file_hash",
+        "code"
+      ]
+    },
+    {
+      "id": "google_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "google",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions LLC\" (site:opencorporates.com OR site:bloomberg.com OR site:sec.gov)",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "google_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "google",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions\" (site:opencorporates.com OR site:bloomberg.com OR site:sec.gov)",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "google_domain_documents",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "google",
+      "category": "documents",
+      "query": "site:targetcorp.com (filetype:pdf OR filetype:doc OR filetype:xls OR filetype:xlsx)",
+      "tags": [
+        "domain",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_domain_documents",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "google",
+      "category": "documents",
+      "query": "site:www.targetcorp.com (filetype:pdf OR filetype:doc OR filetype:xls OR filetype:xlsx)",
+      "tags": [
+        "domain",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_email_pdf",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "google",
+      "category": "documents",
+      "query": "\"analyst@example.org\" filetype:pdf",
+      "tags": [
+        "email",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_email_sheets",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "google",
+      "category": "documents",
+      "query": "\"analyst@example.org\" (filetype:xls OR filetype:xlsx OR filetype:csv)",
+      "tags": [
+        "email",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_wallet_documents",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "google",
+      "category": "documents",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\" (filetype:pdf OR filetype:txt OR filetype:csv)",
+      "tags": [
+        "wallet",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "google",
+      "category": "domain_pages",
+      "query": "site:targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "google_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "google",
+      "category": "domain_pages",
+      "query": "site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "google_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions LLC\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"www.targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_email_exact",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_hash_exact",
+      "identifier_type": "file_hash",
+      "identifier": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "variant": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"e4d909c290d0fb1ca068ffaddf22cbd0\"",
+      "tags": [
+        "file_hash",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"target-security-lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"target.security.lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"target_security_lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"targetsecuritylead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"1HG CR2F83 HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"1HG-CR2F83-HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"1HGCR2F83HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_wallet_exact",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "google",
+      "category": "exact_match",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\"",
+      "tags": [
+        "wallet",
+        "exact"
+      ]
+    },
+    {
+      "id": "google_plate_forums",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"BG 123 AA\" (site:reddit.com OR site:forum.*)",
+      "tags": [
+        "license_plate",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_plate_forums",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"BG 123-AA\" (site:reddit.com OR site:forum.*)",
+      "tags": [
+        "license_plate",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_plate_forums",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"BG-123-AA\" (site:reddit.com OR site:forum.*)",
+      "tags": [
+        "license_plate",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_plate_forums",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"BG123AA\" (site:reddit.com OR site:forum.*)",
+      "tags": [
+        "license_plate",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_username_forums",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"target-security-lead\" (site:reddit.com OR site:medium.com)",
+      "tags": [
+        "username",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_username_forums",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"target.security.lead\" (site:reddit.com OR site:medium.com)",
+      "tags": [
+        "username",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_username_forums",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"target_security_lead\" (site:reddit.com OR site:medium.com)",
+      "tags": [
+        "username",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_username_forums",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"targetsecuritylead\" (site:reddit.com OR site:medium.com)",
+      "tags": [
+        "username",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_wallet_forums",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "google",
+      "category": "forums",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\" (site:bitcointalk.org OR site:reddit.com)",
+      "tags": [
+        "wallet",
+        "forums"
+      ]
+    },
+    {
+      "id": "google_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "google",
+      "category": "marketplaces",
+      "query": "\"1HG CR2F83 HA000000\" (site:copart.com OR site:iaai.com OR site:mobile.de)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "google_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "google",
+      "category": "marketplaces",
+      "query": "\"1HG-CR2F83-HA000000\" (site:copart.com OR site:iaai.com OR site:mobile.de)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "google_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "google",
+      "category": "marketplaces",
+      "query": "\"1HGCR2F83HA000000\" (site:copart.com OR site:iaai.com OR site:mobile.de)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "google_email_mentions",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "google",
+      "category": "mentions",
+      "query": "intext:\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "mentions"
+      ]
+    },
+    {
+      "id": "google_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "google",
+      "category": "mentions",
+      "query": "intext:\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "google_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "google",
+      "category": "mentions",
+      "query": "intext:\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "google_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "google",
+      "category": "mentions",
+      "query": "intext:\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "google_plate_mentions",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "google",
+      "category": "mentions",
+      "query": "intext:\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "mentions"
+      ]
+    },
+    {
+      "id": "google_wallet_mentions",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "google",
+      "category": "mentions",
+      "query": "intext:\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\"",
+      "tags": [
+        "wallet",
+        "mentions"
+      ]
+    },
+    {
+      "id": "google_email_profiles",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "google",
+      "category": "profiles",
+      "query": "\"analyst@example.org\" (site:linkedin.com/in OR site:twitter.com OR site:x.com)",
+      "tags": [
+        "email",
+        "profiles"
+      ]
+    },
+    {
+      "id": "google_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "google",
+      "category": "profiles",
+      "query": "inurl:\"target-security-lead\" (site:github.com OR site:twitter.com OR site:instagram.com OR site:linkedin.com/in)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "google_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "google",
+      "category": "profiles",
+      "query": "inurl:\"target.security.lead\" (site:github.com OR site:twitter.com OR site:instagram.com OR site:linkedin.com/in)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "google_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "google",
+      "category": "profiles",
+      "query": "inurl:\"target_security_lead\" (site:github.com OR site:twitter.com OR site:instagram.com OR site:linkedin.com/in)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "google_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "google",
+      "category": "profiles",
+      "query": "inurl:\"targetsecuritylead\" (site:github.com OR site:twitter.com OR site:instagram.com OR site:linkedin.com/in)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "google_company_docs",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "google",
+      "category": "public_documents",
+      "query": "\"Acme Global Solutions LLC\" (filetype:pdf OR filetype:xlsx OR filetype:csv)",
+      "tags": [
+        "company",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_company_docs",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "google",
+      "category": "public_documents",
+      "query": "\"Acme Global Solutions\" (filetype:pdf OR filetype:xlsx OR filetype:csv)",
+      "tags": [
+        "company",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_vin_docs",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "google",
+      "category": "public_documents",
+      "query": "\"1HG CR2F83 HA000000\" (filetype:pdf OR filetype:txt)",
+      "tags": [
+        "vin",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_vin_docs",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "google",
+      "category": "public_documents",
+      "query": "\"1HG-CR2F83-HA000000\" (filetype:pdf OR filetype:txt)",
+      "tags": [
+        "vin",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_vin_docs",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "google",
+      "category": "public_documents",
+      "query": "\"1HGCR2F83HA000000\" (filetype:pdf OR filetype:txt)",
+      "tags": [
+        "vin",
+        "documents"
+      ]
+    },
+    {
+      "id": "google_company_security",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "google",
+      "category": "security_reports",
+      "query": "\"Acme Global Solutions LLC\" (site:cve.mitre.org OR site:nvd.nist.gov OR site:hackerone.com)",
+      "tags": [
+        "company",
+        "security"
+      ]
+    },
+    {
+      "id": "google_company_security",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "google",
+      "category": "security_reports",
+      "query": "\"Acme Global Solutions\" (site:cve.mitre.org OR site:nvd.nist.gov OR site:hackerone.com)",
+      "tags": [
+        "company",
+        "security"
+      ]
+    },
+    {
+      "id": "google_hash_security",
+      "identifier_type": "file_hash",
+      "identifier": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "variant": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "provider": "google",
+      "category": "security_reports",
+      "query": "\"e4d909c290d0fb1ca068ffaddf22cbd0\" (site:virustotal.com OR site:any.run OR site:hybrid-analysis.com)",
+      "tags": [
+        "file_hash",
+        "security"
+      ]
+    },
+    {
+      "id": "google_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "google",
+      "category": "subdomains",
+      "query": "site:*.targetcorp.com -site:www.targetcorp.com -site:targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "google_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "google",
+      "category": "subdomains",
+      "query": "site:*.www.targetcorp.com -site:www.www.targetcorp.com -site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "yandex_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "yandex",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions LLC\" (site:rusprofile.ru | site:spark-interfax.ru)",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "yandex_company_records",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "yandex",
+      "category": "company_records",
+      "query": "\"Acme Global Solutions\" (site:rusprofile.ru | site:spark-interfax.ru)",
+      "tags": [
+        "company",
+        "records"
+      ]
+    },
+    {
+      "id": "yandex_email_pdf",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "yandex",
+      "category": "documents",
+      "query": "\"analyst@example.org\" mime:pdf",
+      "tags": [
+        "email",
+        "documents"
+      ]
+    },
+    {
+      "id": "yandex_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "yandex",
+      "category": "domain_pages",
+      "query": "site:targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "yandex_domain_pages",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "yandex",
+      "category": "domain_pages",
+      "query": "site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "pages"
+      ]
+    },
+    {
+      "id": "yandex_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions LLC",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions LLC\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_company_exact",
+      "identifier_type": "company",
+      "identifier": "Acme Global Solutions LLC",
+      "variant": "Acme Global Solutions",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"Acme Global Solutions\"",
+      "tags": [
+        "company",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_domain_exact",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"www.targetcorp.com\"",
+      "tags": [
+        "domain",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_email_exact",
+      "identifier_type": "email",
+      "identifier": "analyst@example.org",
+      "variant": "analyst@example.org",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"analyst@example.org\"",
+      "tags": [
+        "email",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_hash_exact",
+      "identifier_type": "file_hash",
+      "identifier": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "variant": "e4d909c290d0fb1ca068ffaddf22cbd0",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"e4d909c290d0fb1ca068ffaddf22cbd0\"",
+      "tags": [
+        "file_hash",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"BG 123 AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"BG 123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"BG-123-AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_plate_exact",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"BG123AA\"",
+      "tags": [
+        "license_plate",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"target-security-lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"target.security.lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"target_security_lead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_username_exact",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"targetsecuritylead\"",
+      "tags": [
+        "username",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"1HG CR2F83 HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"1HG-CR2F83-HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_vin_exact",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"1HGCR2F83HA000000\"",
+      "tags": [
+        "vin",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_wallet_exact",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "yandex",
+      "category": "exact_match",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\"",
+      "tags": [
+        "wallet",
+        "exact"
+      ]
+    },
+    {
+      "id": "yandex_plate_forums",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123 AA",
+      "provider": "yandex",
+      "category": "forums",
+      "query": "\"BG 123 AA\" (site:drive2.ru | site:avto-nomer.ru)",
+      "tags": [
+        "license_plate",
+        "forums"
+      ]
+    },
+    {
+      "id": "yandex_plate_forums",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG 123-AA",
+      "provider": "yandex",
+      "category": "forums",
+      "query": "\"BG 123-AA\" (site:drive2.ru | site:avto-nomer.ru)",
+      "tags": [
+        "license_plate",
+        "forums"
+      ]
+    },
+    {
+      "id": "yandex_plate_forums",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG-123-AA",
+      "provider": "yandex",
+      "category": "forums",
+      "query": "\"BG-123-AA\" (site:drive2.ru | site:avto-nomer.ru)",
+      "tags": [
+        "license_plate",
+        "forums"
+      ]
+    },
+    {
+      "id": "yandex_plate_forums",
+      "identifier_type": "license_plate",
+      "identifier": "BG-123-AA",
+      "variant": "BG123AA",
+      "provider": "yandex",
+      "category": "forums",
+      "query": "\"BG123AA\" (site:drive2.ru | site:avto-nomer.ru)",
+      "tags": [
+        "license_plate",
+        "forums"
+      ]
+    },
+    {
+      "id": "yandex_wallet_forums",
+      "identifier_type": "wallet",
+      "identifier": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "variant": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "provider": "yandex",
+      "category": "forums",
+      "query": "\"0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045\" (site:bitcointalk.org | site:reddit.com)",
+      "tags": [
+        "wallet",
+        "forums"
+      ]
+    },
+    {
+      "id": "yandex_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG CR2F83 HA000000",
+      "provider": "yandex",
+      "category": "marketplaces",
+      "query": "\"1HG CR2F83 HA000000\" (site:auto.ru | site:drom.ru | site:avito.ru)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "yandex_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HG-CR2F83-HA000000",
+      "provider": "yandex",
+      "category": "marketplaces",
+      "query": "\"1HG-CR2F83-HA000000\" (site:auto.ru | site:drom.ru | site:avito.ru)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "yandex_vin_marketplaces",
+      "identifier_type": "vin",
+      "identifier": "1HGCR2F83HA000000",
+      "variant": "1HGCR2F83HA000000",
+      "provider": "yandex",
+      "category": "marketplaces",
+      "query": "\"1HGCR2F83HA000000\" (site:auto.ru | site:drom.ru | site:avito.ru)",
+      "tags": [
+        "vin",
+        "marketplaces"
+      ]
+    },
+    {
+      "id": "yandex_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target-security-lead",
+      "provider": "yandex",
+      "category": "profiles",
+      "query": "inurl:\"target-security-lead\" (site:vk.com | site:t.me | site:github.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "yandex_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target.security.lead",
+      "provider": "yandex",
+      "category": "profiles",
+      "query": "inurl:\"target.security.lead\" (site:vk.com | site:t.me | site:github.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "yandex_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "target_security_lead",
+      "provider": "yandex",
+      "category": "profiles",
+      "query": "inurl:\"target_security_lead\" (site:vk.com | site:t.me | site:github.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "yandex_username_profiles",
+      "identifier_type": "username",
+      "identifier": "target_security_lead",
+      "variant": "targetsecuritylead",
+      "provider": "yandex",
+      "category": "profiles",
+      "query": "inurl:\"targetsecuritylead\" (site:vk.com | site:t.me | site:github.com)",
+      "tags": [
+        "username",
+        "profiles"
+      ]
+    },
+    {
+      "id": "yandex_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "targetcorp.com",
+      "provider": "yandex",
+      "category": "subdomains",
+      "query": "site:targetcorp.com ~~ site:www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    },
+    {
+      "id": "yandex_domain_subdomains",
+      "identifier_type": "domain",
+      "identifier": "targetcorp.com",
+      "variant": "www.targetcorp.com",
+      "provider": "yandex",
+      "category": "subdomains",
+      "query": "site:www.targetcorp.com ~~ site:www.www.targetcorp.com",
+      "tags": [
+        "domain",
+        "subdomains"
+      ]
+    }
+  ],
+  "stats": {
+    "total_queries": 213,
+    "queries_by_provider": {
+      "bing": 38,
+      "brave": 35,
+      "duckduckgo": 35,
+      "google": 68,
+      "yandex": 37
+    },
+    "queries_by_category": {
+      "code": 7,
+      "code_repositories": 1,
+      "company_records": 10,
+      "documents": 9,
+      "domain_pages": 10,
+      "exact_match": 90,
+      "forums": 16,
+      "marketplaces": 9,
+      "mentions": 22,
+      "profiles": 21,
+      "public_documents": 5,
+      "security_reports": 3,
+      "subdomains": 10
+    },
+    "warnings": []
+  }
+}

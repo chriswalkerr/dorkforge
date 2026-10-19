@@ -1,0 +1,98 @@
+# DorkForge Source Profiles Catalog
+# Defines external platforms, services, and domain groups for source coverage tracking.
+
+[[source]]
+id = "public_code_hosts"
+name = "Public code hosting platforms"
+kind = "source_group"
+domains = ["github.com", "gitlab.com"]
+categories = ["code_repositories"]
+supported_identifier_types = ["username", "domain", "email", "text_phrase"]
+limitations = [
+  "Only indexed public pages can be discovered.",
+  "Search coverage depends on the provider."
+]
+
+[[source]]
+id = "developer_pastes"
+name = "Public paste repositories and text dumps"
+kind = "source_group"
+domains = ["pastebin.com", "gist.github.com", "ghostbin.co"]
+categories = ["code_repositories", "mentions"]
+supported_identifier_types = ["email", "wallet", "username", "ip", "text_phrase", "file_hash"]
+limitations = [
+  "Pastes are frequently deleted or expire.",
+  "Search engine indexes may be stale or incomplete."
+]
+
+[[source]]
+id = "discussion_forums"
+name = "Public discussion forums and developer Q&A"
+kind = "source_group"
+domains = ["reddit.com", "stackoverflow.com", "bitcointalk.org"]
+categories = ["forums"]
+supported_identifier_types = ["username", "email", "wallet", "domain", "text_phrase"]
+limitations = [
+  "Thread visibility depends on forum indexing and robots.txt.",
+  "Historical posts may be pruned or locked."
+]
+
+[[source]]
+id = "archive_records"
+name = "Historical web archives and snapshots"
+kind = "source_group"
+domains = ["archive.org", "web.archive.org"]
+categories = ["archives"]
+supported_identifier_types = ["domain", "url", "text_phrase"]
+limitations = [
+  "Search engine indexes do not cover all Wayback Machine snapshots.",
+  "Only historical URLs captured by crawler are discoverable."
+]
+
+[[source]]
+id = "security_intel"
+name = "Public security and reputation reporting services"
+kind = "source_group"
+domains = ["virustotal.com", "shodan.io", "urlscan.io", "crt.sh"]
+categories = ["security_reports"]
+supported_identifier_types = ["ip", "domain", "url", "file_hash", "certificate", "asn"]
+limitations = [
+  "Search engines index summary pages, not private API datasets.",
+  "Reports reflect past scanning timestamps."
+]
+
+[[source]]
+id = "company_registries"
+name = "Corporate publications and open registries"
+kind = "source_group"
+domains = ["sec.gov", "opencorporates.com", "companieshouse.gov.uk"]
+categories = ["company_records"]
+supported_identifier_types = ["company", "person_id", "domain"]
+limitations = [
+  "Coverage varies by jurisdiction.",
+  "Some national registers require authenticated portal search."
+]
+
+[[source]]
+id = "public_marketplaces"
+name = "Public classifieds and auction marketplaces"
+kind = "source_group"
+domains = ["mobile.de", "copart.com", "ebay.com"]
+categories = ["marketplaces"]
+supported_identifier_types = ["vin", "license_plate", "phone", "company"]
+limitations = [
+  "Listing pages are short-lived and expire after sale.",
+  "Anti-scraping restrictions may reduce search engine crawler access."
+]
+
+[[source]]
+id = "document_repositories"
+name = "Public document and presentation repositories"
+kind = "source_group"
+domains = ["slideshare.net", "scribd.com", "issuu.com"]
+categories = ["documents"]
+supported_identifier_types = ["company", "domain", "name", "email", "text_phrase"]
+limitations = [
+  "Only publicly indexed documents are accessible.",
+  "Full text indexing varies between search engines."
+]

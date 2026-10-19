@@ -1,0 +1,1089 @@
+# Yandex Search Templates (revised)
+# Documented: site (incl. subdomains), host (main host only), url, inurl, title, mime (pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc), lang, quotes, +, -, | (OR), parentheses
+# Not available: intext/inbody, filetype, ip. Old '~~' for exclusion removed (it is a word-level operator, not for site:)
+# Optional keys (need parser support): note = "", validation = "untested"
+# Categories: blockchain_explorers, code_repositories, company_records, documents, domain_pages, exact_match, forums, indexed_pages, marketplaces, mentions, profiles, public_records, security_reports, subdomain_heuristics, technology_fingerprint
+
+# --- EMAIL ---
+[[template]]
+id = "yandex_email_exact"
+enabled = true
+identifier_type = "email"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["email", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_email_pdf"
+enabled = true
+identifier_type = "email"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" mime:pdf'
+tags = ["email", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_email_sheets"
+enabled = true
+identifier_type = "email"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" mime:xls'
+tags = ["email", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_email_github"
+enabled = true
+identifier_type = "email"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:github.com'
+tags = ["email", "github"]
+validation = "untested"
+
+[[template]]
+id = "yandex_email_gitlab"
+enabled = true
+identifier_type = "email"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:gitlab.com'
+tags = ["email", "gitlab"]
+validation = "untested"
+
+[[template]]
+id = "yandex_email_pastebin"
+enabled = true
+identifier_type = "email"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:pastebin.com'
+tags = ["email", "pastebin", "paste"]
+validation = "untested"
+
+[[template]]
+id = "yandex_email_linkedin"
+enabled = true
+identifier_type = "email"
+category = "public_profiles"
+providers = ["yandex"]
+template = '"{value}" site:linkedin.com/in'
+tags = ["email", "linkedin"]
+validation = "untested"
+
+[[template]]
+id = "yandex_email_x"
+enabled = true
+identifier_type = "email"
+category = "public_profiles"
+providers = ["yandex"]
+template = '"{value}" (site:x.com | site:twitter.com)'
+tags = ["email", "profiles", "x"]
+validation = "untested"
+note = "x.com and twitter.com are one platform; old pages are indexed under twitter.com"
+
+# --- WALLET ---
+[[template]]
+id = "yandex_wallet_exact"
+enabled = true
+identifier_type = "wallet"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["wallet", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_wallet_bitcointalk"
+enabled = true
+identifier_type = "wallet"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:bitcointalk.org'
+tags = ["wallet", "bitcointalk"]
+validation = "untested"
+
+[[template]]
+id = "yandex_wallet_reddit"
+enabled = true
+identifier_type = "wallet"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:reddit.com'
+tags = ["wallet", "reddit"]
+validation = "untested"
+
+[[template]]
+id = "yandex_wallet_documents"
+enabled = true
+identifier_type = "wallet"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" mime:pdf'
+tags = ["wallet", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_wallet_blockchair"
+enabled = true
+identifier_type = "wallet"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}" site:blockchair.com'
+tags = ["wallet", "blockchair"]
+validation = "untested"
+note = "Network-dependent; select explorers by chain via network_or_asset"
+
+[[template]]
+id = "yandex_wallet_etherscan"
+enabled = true
+identifier_type = "wallet"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}" site:etherscan.io'
+tags = ["wallet", "etherscan"]
+validation = "untested"
+note = "EVM addresses only"
+
+# --- USERNAME ---
+[[template]]
+id = "yandex_username_exact"
+enabled = true
+identifier_type = "username"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["username", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_username_profile_github"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:github.com'
+tags = ["username", "profiles", "github"]
+validation = "untested"
+note = "inurl: matches a word in the URL; verify quoting behaviour"
+
+[[template]]
+id = "yandex_username_profile_x"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:x.com'
+tags = ["username", "profiles", "x"]
+validation = "untested"
+note = "inurl: matches a word in the URL; verify quoting behaviour"
+
+[[template]]
+id = "yandex_username_profile_twitter"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:twitter.com'
+tags = ["username", "profiles", "x"]
+validation = "untested"
+note = "inurl: matches a word in the URL; verify quoting behaviour"
+
+[[template]]
+id = "yandex_username_profile_instagram"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:instagram.com'
+tags = ["username", "profiles", "instagram"]
+validation = "untested"
+note = "inurl: matches a word in the URL; verify quoting behaviour"
+
+[[template]]
+id = "yandex_username_profile_linkedin"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:linkedin.com/in'
+tags = ["username", "profiles", "linkedin"]
+validation = "untested"
+note = "inurl: matches a word in the URL; verify quoting behaviour"
+
+[[template]]
+id = "yandex_username_profile_medium"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:medium.com'
+tags = ["username", "profiles", "medium"]
+validation = "untested"
+note = "inurl: matches a word in the URL; verify quoting behaviour"
+
+[[template]]
+id = "yandex_username_reddit"
+enabled = true
+identifier_type = "username"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:reddit.com'
+tags = ["username", "reddit"]
+validation = "untested"
+
+[[template]]
+id = "yandex_username_github_code"
+enabled = true
+identifier_type = "username"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:github.com'
+tags = ["username", "github", "code"]
+validation = "untested"
+
+[[template]]
+id = "yandex_username_gitlab"
+enabled = true
+identifier_type = "username"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:gitlab.com'
+tags = ["username", "gitlab"]
+validation = "untested"
+
+[[template]]
+id = "yandex_username_profile_vk"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:vk.com'
+tags = ["username", "profiles", "vk"]
+validation = "untested"
+
+[[template]]
+id = "yandex_username_profile_tme"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:t.me'
+tags = ["username", "profiles", "telegram"]
+validation = "untested"
+
+[[template]]
+id = "yandex_username_profile_ok"
+enabled = true
+identifier_type = "username"
+category = "public_profiles"
+providers = ["yandex"]
+template = 'inurl:{value} site:ok.ru'
+tags = ["username", "profiles", "ok"]
+validation = "untested"
+
+# --- NAME ---
+[[template]]
+id = "yandex_name_exact"
+enabled = true
+identifier_type = "name"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["name", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_name_documents"
+enabled = true
+identifier_type = "name"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" (mime:pdf | mime:doc)'
+tags = ["name", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_name_linkedin"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["yandex"]
+template = '"{value}" site:linkedin.com/in'
+tags = ["name", "linkedin"]
+validation = "untested"
+
+[[template]]
+id = "yandex_name_facebook"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["yandex"]
+template = '"{value}" site:facebook.com'
+tags = ["name", "facebook"]
+validation = "untested"
+
+[[template]]
+id = "yandex_name_instagram"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["yandex"]
+template = '"{value}" site:instagram.com'
+tags = ["name", "instagram"]
+validation = "untested"
+
+[[template]]
+id = "yandex_name_reddit"
+enabled = true
+identifier_type = "name"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:reddit.com'
+tags = ["name", "reddit"]
+validation = "untested"
+
+[[template]]
+id = "yandex_name_quora"
+enabled = true
+identifier_type = "name"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:quora.com'
+tags = ["name", "quora"]
+validation = "untested"
+
+[[template]]
+id = "yandex_name_vk"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["yandex"]
+template = '"{value}" site:vk.com'
+tags = ["name", "profiles", "vk"]
+validation = "untested"
+
+[[template]]
+id = "yandex_name_tme"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["yandex"]
+template = '"{value}" site:t.me'
+tags = ["name", "profiles", "telegram"]
+validation = "untested"
+
+[[template]]
+id = "yandex_name_ok"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["yandex"]
+template = '"{value}" site:ok.ru'
+tags = ["name", "profiles", "ok"]
+validation = "untested"
+
+# --- DOMAIN ---
+[[template]]
+id = "yandex_domain_exact"
+enabled = true
+identifier_type = "domain"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["domain", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_domain_indexed_pages"
+enabled = true
+identifier_type = "domain"
+category = "domain_pages"
+providers = ["yandex"]
+template = 'site:{value}'
+tags = ["domain", "indexed_pages"]
+validation = "untested"
+
+[[template]]
+id = "yandex_domain_subdomains"
+enabled = true
+identifier_type = "domain"
+category = "subdomains"
+providers = ["yandex"]
+template = 'site:{value} -host:{value}'
+tags = ["domain", "subdomains", "heuristic"]
+validation = "untested"
+note = "Search-engine heuristic, not DNS enumeration; use CT logs / DNS sources for real inventory Yandex: minus before site:/host: is not confirmed in official docs; verify"
+
+[[template]]
+id = "yandex_domain_mentions_external"
+enabled = true
+identifier_type = "domain"
+category = "mentions"
+providers = ["yandex"]
+template = '"{value}" -site:{value}'
+tags = ["domain", "mentions", "experimental"]
+validation = "untested"
+note = "External mentions; does not guarantee full exclusion of own pages Yandex: minus before site:/host: is not confirmed in official docs; verify"
+
+[[template]]
+id = "yandex_domain_documents"
+enabled = true
+identifier_type = "domain"
+category = "documents"
+providers = ["yandex"]
+template = 'site:{value} (mime:pdf | mime:doc | mime:xls)'
+tags = ["domain", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_domain_github"
+enabled = true
+identifier_type = "domain"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:github.com'
+tags = ["domain", "github"]
+validation = "untested"
+
+[[template]]
+id = "yandex_domain_gitlab"
+enabled = true
+identifier_type = "domain"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:gitlab.com'
+tags = ["domain", "gitlab"]
+validation = "untested"
+
+[[template]]
+id = "yandex_domain_bitbucket"
+enabled = true
+identifier_type = "domain"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:bitbucket.org'
+tags = ["domain", "bitbucket"]
+validation = "untested"
+
+[[template]]
+id = "yandex_domain_host_pages"
+enabled = true
+identifier_type = "domain"
+category = "domain_pages"
+providers = ["yandex"]
+template = 'host:{value}'
+tags = ["domain", "host_pages"]
+validation = "untested"
+note = "host: = main host only, without subdomains (site: includes them)"
+
+# --- IP ---
+[[template]]
+id = "yandex_ip_exact"
+enabled = true
+identifier_type = "ip"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["ip", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_ip_abuseipdb"
+enabled = true
+identifier_type = "ip"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:abuseipdb.com'
+tags = ["ip", "abuseipdb"]
+validation = "untested"
+
+[[template]]
+id = "yandex_ip_virustotal"
+enabled = true
+identifier_type = "ip"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:virustotal.com'
+tags = ["ip", "virustotal"]
+validation = "untested"
+
+# --- PHONE ---
+[[template]]
+id = "yandex_phone_exact"
+enabled = true
+identifier_type = "phone"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["phone", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_phone_documents"
+enabled = true
+identifier_type = "phone"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" (mime:pdf | mime:xls)'
+tags = ["phone", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+# --- LICENSE_PLATE ---
+[[template]]
+id = "yandex_plate_exact"
+enabled = true
+identifier_type = "license_plate"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["license_plate", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_plate_reddit"
+enabled = true
+identifier_type = "license_plate"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:reddit.com'
+tags = ["license_plate", "reddit", "forums"]
+validation = "untested"
+
+[[template]]
+id = "yandex_plate_drive2"
+enabled = true
+identifier_type = "license_plate"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:drive2.ru'
+tags = ["license_plate", "forums", "drive2"]
+validation = "untested"
+
+[[template]]
+id = "yandex_plate_avto_nomer"
+enabled = true
+identifier_type = "license_plate"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:avto-nomer.ru'
+tags = ["license_plate", "forums", "avto_nomer"]
+validation = "untested"
+
+# --- COMPANY ---
+[[template]]
+id = "yandex_company_exact"
+enabled = true
+identifier_type = "company"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["company", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_company_opencorporates"
+enabled = true
+identifier_type = "company"
+category = "company_records"
+providers = ["yandex"]
+template = '"{value}" site:opencorporates.com'
+tags = ["company", "opencorporates"]
+validation = "untested"
+
+[[template]]
+id = "yandex_company_sec"
+enabled = true
+identifier_type = "company"
+category = "company_records"
+providers = ["yandex"]
+template = '"{value}" site:sec.gov'
+tags = ["company", "sec"]
+validation = "untested"
+
+[[template]]
+id = "yandex_company_docs"
+enabled = true
+identifier_type = "company"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" (mime:pdf | mime:xls)'
+tags = ["company", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_company_nvd"
+enabled = true
+identifier_type = "company"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:nvd.nist.gov'
+tags = ["company", "nvd"]
+validation = "untested"
+
+[[template]]
+id = "yandex_company_hackerone"
+enabled = true
+identifier_type = "company"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:hackerone.com'
+tags = ["company", "hackerone"]
+validation = "untested"
+
+[[template]]
+id = "yandex_company_rusprofile"
+enabled = true
+identifier_type = "company"
+category = "company_records"
+providers = ["yandex"]
+template = '"{value}" site:rusprofile.ru'
+tags = ["company", "records", "rusprofile"]
+validation = "untested"
+
+[[template]]
+id = "yandex_company_spark"
+enabled = true
+identifier_type = "company"
+category = "company_records"
+providers = ["yandex"]
+template = '"{value}" site:spark-interfax.ru'
+tags = ["company", "records", "spark"]
+validation = "untested"
+
+# --- PERSON_ID ---
+[[template]]
+id = "yandex_person_id_exact"
+enabled = true
+identifier_type = "person_id"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["person_id", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_person_id_ru_nalog"
+enabled = false
+identifier_type = "person_id"
+category = "public_records"
+providers = ["yandex"]
+template = '"{value}" site:nalog.ru'
+tags = ["person_id", "records", "country_ru"]
+validation = "untested"
+note = "RU-only; enable via country profile. Replaces generic site:reestr.* / site:court.* masks"
+
+[[template]]
+id = "yandex_person_id_docs"
+enabled = true
+identifier_type = "person_id"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" (mime:pdf | mime:doc | mime:xls)'
+tags = ["person_id", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_person_id_ru_nalog_gov"
+enabled = false
+identifier_type = "person_id"
+category = "public_records"
+providers = ["yandex"]
+template = '"{value}" site:nalog.gov.ru'
+tags = ["person_id", "records", "country_ru"]
+validation = "untested"
+note = "RU-only; enable via country profile"
+
+[[template]]
+id = "yandex_person_id_ru_reestr_zalogov"
+enabled = false
+identifier_type = "person_id"
+category = "public_records"
+providers = ["yandex"]
+template = '"{value}" site:reestr-zalogov.ru'
+tags = ["person_id", "records", "country_ru"]
+validation = "untested"
+note = "RU-only; enable via country profile"
+
+# --- URL ---
+[[template]]
+id = "yandex_url_exact"
+enabled = true
+identifier_type = "url"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["url", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_url_github"
+enabled = true
+identifier_type = "url"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:github.com'
+tags = ["url", "github"]
+validation = "untested"
+
+[[template]]
+id = "yandex_url_gitlab"
+enabled = true
+identifier_type = "url"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:gitlab.com'
+tags = ["url", "gitlab"]
+validation = "untested"
+
+[[template]]
+id = "yandex_url_pastebin"
+enabled = true
+identifier_type = "url"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:pastebin.com'
+tags = ["url", "pastebin"]
+validation = "untested"
+
+[[template]]
+id = "yandex_url_virustotal"
+enabled = true
+identifier_type = "url"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:virustotal.com'
+tags = ["url", "virustotal"]
+validation = "untested"
+
+[[template]]
+id = "yandex_url_urlscan"
+enabled = true
+identifier_type = "url"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:urlscan.io'
+tags = ["url", "urlscan"]
+validation = "untested"
+
+[[template]]
+id = "yandex_url_hybrid_analysis"
+enabled = true
+identifier_type = "url"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:hybrid-analysis.com'
+tags = ["url", "hybrid_analysis"]
+validation = "untested"
+
+[[template]]
+id = "yandex_url_page"
+enabled = true
+identifier_type = "url"
+category = "exact_match"
+providers = ["yandex"]
+template = 'url:{value}'
+tags = ["url", "url_operator"]
+validation = "untested"
+note = "Yandex url: expects host/path without scheme (strip http(s):// in normalization); trailing * for prefix match"
+
+# --- VIN ---
+[[template]]
+id = "yandex_vin_exact"
+enabled = true
+identifier_type = "vin"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["vin", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_vin_copart"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["yandex"]
+template = '"{value}" site:copart.com'
+tags = ["vin", "copart"]
+validation = "untested"
+
+[[template]]
+id = "yandex_vin_iaai"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["yandex"]
+template = '"{value}" site:iaai.com'
+tags = ["vin", "iaai"]
+validation = "untested"
+
+[[template]]
+id = "yandex_vin_mobile_de"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["yandex"]
+template = '"{value}" site:mobile.de'
+tags = ["vin", "mobile_de"]
+validation = "untested"
+
+[[template]]
+id = "yandex_vin_docs"
+enabled = true
+identifier_type = "vin"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" mime:pdf'
+tags = ["vin", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_vin_auto_ru"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["yandex"]
+template = '"{value}" site:auto.ru'
+tags = ["vin", "marketplaces", "auto_ru"]
+validation = "untested"
+
+[[template]]
+id = "yandex_vin_drom"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["yandex"]
+template = '"{value}" site:drom.ru'
+tags = ["vin", "marketplaces", "drom"]
+validation = "untested"
+
+[[template]]
+id = "yandex_vin_avito"
+enabled = true
+identifier_type = "vin"
+category = "marketplaces"
+providers = ["yandex"]
+template = '"{value}" site:avito.ru'
+tags = ["vin", "marketplaces", "avito"]
+validation = "untested"
+
+# --- FILE_HASH ---
+[[template]]
+id = "yandex_hash_exact"
+enabled = true
+identifier_type = "file_hash"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["file_hash", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_hash_virustotal"
+enabled = true
+identifier_type = "file_hash"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:virustotal.com'
+tags = ["file_hash", "virustotal"]
+validation = "untested"
+
+[[template]]
+id = "yandex_hash_any_run"
+enabled = true
+identifier_type = "file_hash"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:any.run'
+tags = ["file_hash", "any_run"]
+validation = "untested"
+
+[[template]]
+id = "yandex_hash_hybrid_analysis"
+enabled = true
+identifier_type = "file_hash"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:hybrid-analysis.com'
+tags = ["file_hash", "hybrid_analysis"]
+validation = "untested"
+
+[[template]]
+id = "yandex_hash_github"
+enabled = true
+identifier_type = "file_hash"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:github.com'
+tags = ["file_hash", "github"]
+validation = "untested"
+note = "Secondary pivot: a hash in a repo does not imply file info"
+
+[[template]]
+id = "yandex_hash_gitlab"
+enabled = true
+identifier_type = "file_hash"
+category = "code_repositories"
+providers = ["yandex"]
+template = '"{value}" site:gitlab.com'
+tags = ["file_hash", "gitlab"]
+validation = "untested"
+note = "Secondary pivot"
+
+# --- TEXT_PHRASE ---
+[[template]]
+id = "yandex_phrase_exact"
+enabled = true
+identifier_type = "text_phrase"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["text_phrase", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_phrase_docs"
+enabled = true
+identifier_type = "text_phrase"
+category = "documents"
+providers = ["yandex"]
+template = '"{value}" (mime:pdf | mime:doc)'
+tags = ["text_phrase", "documents"]
+validation = "untested"
+note = "Yandex mime: types: pdf, xls, ods, rtf, ppt, odp, swf, odt, odg, doc (docx->doc, xlsx->xls); OR is |; csv/txt/log/conf not supported"
+
+[[template]]
+id = "yandex_phrase_reddit"
+enabled = true
+identifier_type = "text_phrase"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:reddit.com'
+tags = ["text_phrase", "reddit"]
+validation = "untested"
+
+[[template]]
+id = "yandex_phrase_quora"
+enabled = true
+identifier_type = "text_phrase"
+category = "forums"
+providers = ["yandex"]
+template = '"{value}" site:quora.com'
+tags = ["text_phrase", "quora"]
+validation = "untested"
+
+# --- ASN ---
+[[template]]
+id = "yandex_asn_exact"
+enabled = true
+identifier_type = "asn"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["asn", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_asn_bgp_he"
+enabled = true
+identifier_type = "asn"
+category = "technology_fingerprint"
+providers = ["yandex"]
+template = '"{value}" site:bgp.he.net'
+tags = ["asn", "bgp_he"]
+validation = "untested"
+
+[[template]]
+id = "yandex_asn_ipinfo"
+enabled = true
+identifier_type = "asn"
+category = "technology_fingerprint"
+providers = ["yandex"]
+template = '"{value}" site:ipinfo.io'
+tags = ["asn", "ipinfo"]
+validation = "untested"
+
+[[template]]
+id = "yandex_asn_peeringdb"
+enabled = true
+identifier_type = "asn"
+category = "technology_fingerprint"
+providers = ["yandex"]
+template = '"{value}" site:peeringdb.com'
+tags = ["asn", "peeringdb"]
+validation = "untested"
+
+[[template]]
+id = "yandex_asn_abuseipdb"
+enabled = true
+identifier_type = "asn"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:abuseipdb.com'
+tags = ["asn", "abuseipdb"]
+validation = "untested"
+
+[[template]]
+id = "yandex_asn_shodan"
+enabled = true
+identifier_type = "asn"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:shodan.io'
+tags = ["asn", "shodan"]
+validation = "untested"
+
+# --- CERTIFICATE ---
+[[template]]
+id = "yandex_cert_exact"
+enabled = true
+identifier_type = "certificate"
+category = "exact_match"
+providers = ["yandex"]
+template = '"{value}"'
+tags = ["certificate", "exact", "baseline"]
+validation = "untested"
+
+[[template]]
+id = "yandex_cert_crtsh"
+enabled = true
+identifier_type = "certificate"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:crt.sh'
+tags = ["certificate", "crtsh"]
+validation = "untested"
+
+[[template]]
+id = "yandex_cert_censys"
+enabled = true
+identifier_type = "certificate"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:censys.io'
+tags = ["certificate", "censys"]
+validation = "untested"
+
+[[template]]
+id = "yandex_cert_shodan"
+enabled = true
+identifier_type = "certificate"
+category = "security_reports"
+providers = ["yandex"]
+template = '"{value}" site:shodan.io'
+tags = ["certificate", "shodan"]
+validation = "untested"

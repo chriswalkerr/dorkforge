@@ -1,0 +1,182 @@
+# Shared templates (provider-neutral syntax only: quotes + site:)
+
+# Contains ONLY queries that no provider catalog already generates; a unit test enforces this
+
+# Dropped from the old high-recall file: 10 exact duplicates of provider catalogs, plus
+
+# domain+crt.sh (crt.sh pages are dynamic and not indexed -> build direct crt.sh links instead)
+
+# phone+facebook.com/marketplace (path in site:, marketplace listings not indexed)
+
+# plate+mobile.de (listings do not expose plates; VIN is the right pivot there)
+
+# domain external mentions (negation syntax differs: Brave uses NOT, so it lives in provider catalogs)
+
+[[template]]
+id = "shared_name_linkedin_any"
+enabled = true
+identifier_type = "name"
+category = "public_profiles"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = '"{value}" site:linkedin.com'
+tags = ["name", "profiles", "shared"]
+description = "Search indexed LinkedIn pages for a person's name."
+rationale = "Use a provider-neutral domain pivot to find public professional-profile mentions."
+limitations = "May return company pages and posts as well as profiles; does not enumerate all LinkedIn content."
+source_domains = ["linkedin.com"]
+template_version = 1
+note = "Broader than *_name_linkedin (linkedin.com/in): also finds company pages and posts"
+
+[template.validation]
+status = "untested"
+
+[[template]]
+id = "shared_ip_shodan"
+enabled = true
+identifier_type = "ip"
+category = "security_reports"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = '"{value}" site:shodan.io'
+tags = ["ip", "security", "shared"]
+description = "Search indexed public Shodan pages for an IP address."
+rationale = "Find public security-reporting references associated with the address."
+limitations = "Searches indexed pages only; does not query Shodan or determine the current state of the IP."
+source_domains = ["shodan.io"]
+template_version = 1
+note = "Shodan pages are only partly indexed; check the host page directly as well"
+
+[template.validation]
+status = "untested"
+
+[[template]]
+id = "shared_phrase_github"
+enabled = true
+identifier_type = "text_phrase"
+category = "mentions"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = '"{value}" site:github.com'
+tags = ["text_phrase", "code", "shared"]
+description = "Search indexed public GitHub pages for an exact text phrase."
+rationale = "Find public repository pages containing the supplied phrase."
+limitations = "Does not search all repository history, private repositories, or unindexed content."
+source_domains = ["github.com"]
+template_version = 1
+
+[template.validation]
+status = "untested"
+
+# -----------------------------------------------------------------------------
+# Combined Identifiers OSINT Pivot Templates
+# -----------------------------------------------------------------------------
+
+[[template]]
+id = "combo_username_domain_profile"
+enabled = true
+identifier_types = ["username", "domain"]
+category = "public_profiles"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = 'site:{domain} "{username}"'
+tags = ["username", "domain", "profile", "combo"]
+purpose = "Find public profile or author pages for a username on a target domain."
+rationale = "Combines a site restriction with an exact username phrase."
+limitations = "Search engines may tokenize or rewrite queries; unindexed profiles will not be found."
+operator_requirements = ["site"]
+source_domains = []
+validation_status = "documented"
+official_references = ["https://support.google.com/websearch/"]
+
+[[template]]
+id = "combo_username_domain_forums"
+enabled = true
+identifier_types = ["username", "domain"]
+category = "forums"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = 'site:{domain} "{username}"'
+tags = ["username", "domain", "forums", "combo"]
+purpose = "Search for a specific username across discussion threads on a given domain."
+rationale = "Restricts username discovery to community and forum platforms."
+limitations = "Forum pagination and member lists may be blocked by robots.txt."
+operator_requirements = ["site"]
+source_domains = []
+validation_status = "documented"
+official_references = ["https://support.google.com/websearch/"]
+
+[[template]]
+id = "combo_username_domain_code"
+enabled = true
+identifier_types = ["username", "domain"]
+category = "code_repositories"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = 'site:{domain} "{username}"'
+tags = ["username", "domain", "code", "combo"]
+purpose = "Search repository pages on a code hosting domain for a username."
+rationale = "Locates code repository profiles, commits, and issue discussions."
+limitations = "Code search within search engines only covers indexed HTML pages, not raw git objects."
+operator_requirements = ["site"]
+source_domains = []
+validation_status = "documented"
+official_references = ["https://support.google.com/websearch/"]
+
+[[template]]
+id = "combo_name_company_documents"
+enabled = true
+identifier_types = ["name", "company"]
+category = "documents"
+providers = ["google", "bing", "brave", "duckduckgo"]
+template = '"{name}" "{company}" filetype:pdf'
+tags = ["name", "company", "documents", "combo"]
+purpose = "Find public PDF documents mentioning both a person and a company."
+rationale = "Correlates person and organization in indexed corporate publications and reports."
+limitations = "Search engines may index only document snippets; requires exact phrase matching."
+operator_requirements = ["filetype"]
+source_domains = []
+validation_status = "documented"
+official_references = ["https://support.google.com/websearch/"]
+
+[[template]]
+id = "combo_email_domain_mentions"
+enabled = true
+identifier_types = ["email", "domain"]
+category = "mentions"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = '"{email}" "{domain}"'
+tags = ["email", "domain", "mentions", "combo"]
+purpose = "Find public pages mentioning both an email address and an associated domain."
+rationale = "Discovers co-occurrences of contact address and domain name across indexed pages."
+limitations = "Does not distinguish between primary domain and quoted third-party references."
+operator_requirements = []
+source_domains = []
+validation_status = "documented"
+official_references = ["https://support.google.com/websearch/"]
+
+[[template]]
+id = "combo_company_domain_records"
+enabled = true
+identifier_types = ["company", "domain"]
+category = "company_records"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = 'site:{domain} "{company}"'
+tags = ["company", "domain", "records", "combo"]
+purpose = "Find official company records, disclosures, and legal notices on a target domain."
+rationale = "Binds legal company title within a domain-scoped search."
+limitations = "Only indexed sub-pages will appear in search results."
+operator_requirements = ["site"]
+source_domains = []
+validation_status = "documented"
+official_references = ["https://support.google.com/websearch/"]
+
+[[template]]
+id = "combo_vin_plate_marketplaces"
+enabled = true
+identifier_types = ["vin", "license_plate"]
+category = "marketplaces"
+providers = ["google", "bing", "yandex", "brave", "duckduckgo"]
+template = '"{vin}" "{license_plate}"'
+tags = ["vin", "license_plate", "marketplaces", "combo"]
+purpose = "Find vehicle auction listings and marketplace entries containing both VIN and license plate."
+rationale = "Correlates vehicle registration number with unique chassis VIN on public pages."
+limitations = "Listings expire rapidly; license plates are often blurred or omitted from descriptions."
+operator_requirements = []
+source_domains = []
+validation_status = "documented"
+official_references = ["https://support.google.com/websearch/"]

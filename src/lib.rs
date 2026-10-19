@@ -1,0 +1,15 @@
+//! DorkForge library.
+pub mod cli;
+pub mod combination;
+pub mod coverage;
+pub mod diff;
+pub mod error;
+pub mod generator;
+pub mod identifiers;
+pub mod input;
+pub mod output;
+pub mod providers;
+pub mod quality;
+pub mod templates;
+pub mod variants;
+pub mod watch;
