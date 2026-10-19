@@ -4,6 +4,7 @@
 
 **A deterministic, local OSINT dork and search query generator written in Rust**
 
+[![CI](https://github.com/chriswalkerr/dorkforge/actions/workflows/ci.yml/badge.svg)](https://github.com/chriswalkerr/dorkforge/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/rust-1.85%2B-orange.svg)](https://www.rust-lang.org/)
 
